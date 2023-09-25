@@ -1,9 +1,25 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import NavbarMain from '../components/NavbarMain.vue';
+
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <NavbarMain :items="[
+    { label: 'Inicio', route: '/' },
+    { label: 'Historial', route: '/about' },
+    { label: 'Notificaciones', route: '/notifications'},
+    {label: 'Perfil', route: '/profile'},
+    {label: 'Contacto', route: '/contact'}
+  ]" />
 </template>
+
+<script>
+
+export default {
+  name: 'HomeView',
+  components: {
+    NavbarMain
+  },
+}
+
+</script>
