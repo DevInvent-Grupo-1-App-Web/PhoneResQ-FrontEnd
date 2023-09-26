@@ -1,6 +1,6 @@
 <template>
-    <div id="appSearch">
-        <div class="container">
+    <div id="app">
+        <div class="containersearch">
       <header>
         <h1>PhoneResQ</h1>
         <p>Tenemos los mejores técnicos en reparación de teléfones celulares a tú disposición</p>
@@ -59,11 +59,11 @@
   };
   </script>
   
-  <style>
+  <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Jost&family=Nunito+Sans:opsz,wght@6..12,500&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Jost&family=Mulish:wght@200&family=Nunito+Sans:opsz,wght@6..12,500&family=Poppins&display=swap');
 
-  #appsearch{
+  #app{
 
     display: flex;
     width: 100%;
@@ -76,19 +76,21 @@
   }
 
 
-  body {
+  .body-appsearch {
     font-family: sans-serif;
     align-items: center;
+    display: flex;
   }
   
   .container {
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 100%;
+    display: flex;
   }
   
   header {
     background-color: #f9f9f9;
-    padding: 10px 20px;
+    padding: 10px ;
     color: #243347;
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -123,7 +125,7 @@
   
   main {
     display: flex;
-    width: 90%;
+    width: 100%;
     height: 100%;
     padding: 8px 0px 334px 8px;
     flex-direction: column;
@@ -132,14 +134,14 @@
     flex-shrink: 0;
   }
     .rmessage{
-
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 20px;
     text-align: center;
     margin-left: 85px;
     }  
   form {
     display: flex;
-    width: 75%;
+    width: 100%;
     max-height: 100%;
     align-items: flex-start;
     border-radius: 4px;
@@ -150,15 +152,21 @@
   }
   
   input {
-    max-width: 40%;
+    width: 100%;
+    height: 100%;
     padding: 10px;
+    font-family: 'Mulish', sans-serif;
+    border-radius: 10px;
     display: flex;
     border: 1px solid #ccc;
   }
   
   select {
-    width: 35%;
+    font-family: 'Mulish', sans-serif;
+    width: 100%;
     padding: 10px;
+    border-radius: 10px;
+    display: flex;
     border: 1px solid #ccc;
   }
   
@@ -169,7 +177,8 @@
         cursor: pointer;
         display: flex;
         height: 100%;
-        width: 40%;
+        border-radius: 10px;
+        width: 100%;
         padding: 12px 20px;
         align-items: center;
         gap: 8px;   
@@ -191,7 +200,7 @@
   }
   
   @media (max-width: 500px) {
-    .container {
+    .containersearch {
       width: 100%;
       align-items: center;
     }

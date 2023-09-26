@@ -49,23 +49,23 @@
   <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Jost&family=Nunito+Sans:opsz,wght@6..12,500&display=swap');
 
-
     #servicecard{
-        margin-top: 80px;
+        margin-top: 7%;
         justify-content: center;
-        height: 85%;
-        width: 100%;
+        height: 100%;
+        width: 80%;
         background: var(--Purple-White, #F6F6FE);
     }
-    .service-card-body{
-        max-height: 100%;
+    div.service-card-body{
         display: flex;
+
     }
   .service-card {
-    width: 200%;
-    max-height: fit-content;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
+    align-items: center;
+    margin-left: 15%;
     border-radius: 0.5rem;
     border-radius: 16px;
     border: 1px solid rgba(0, 0, 0, 0.50);
@@ -75,20 +75,20 @@
   .service-card-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    width: 150%;
+    align-items: left;
+    padding-left: 1rem;
+    width: 100%;
     align-content: center;
   }
   
   .service-card-title {
     font-weight: bold;
-    text-align: center;
+    text-align: left;
     font-family: "Nunito Sans", sans-serif;
     font-size: 60px;
     font-style: normal;
     font-weight: 700;
-    line-height: 93.75%;
+    line-height: 82%;
     background: linear-gradient(180deg, #243347 0%, rgba(36, 51, 71, 0.00) 164.44%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -99,16 +99,15 @@
     padding: 1rem;
     display: flex;
     width: 100%;
-    height: 200%;
+    height: 100%;
     align-items: flex-start;
     gap: 34px;
     flex-shrink: 0;
   }
   
   .service-card-details {
-    margin-bottom: 1rem;
     height: 100%;
-    width: 100%;
+    width: 80%;
     align-items: flex-start;
     gap: 34px;
     flex-shrink: 0;
@@ -122,18 +121,24 @@
     font-family: "Nunito Sans", sans-serif;
     font-size: 15px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 200;
     line-height: normal;
   }
   
   .service-card-actions {
-    padding: 10px;
-    
+    padding-right: 12px;
+    align-items: center;
+    width: 100%;
+    height: 100%;   
   }
   
-  .button {
-    margin-right: 1rem;
+  button {
     border-radius: 8px;
+    color: #F6F6FE;
+    width: 80%;
+    
+    padding: 10px;
+    height: 80%;
     background: #243347;
   }
   
