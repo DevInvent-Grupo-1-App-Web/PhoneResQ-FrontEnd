@@ -13,6 +13,7 @@ const router = createRouter({
    {path:'/search',name:'search',component:searchcomponent},
    {path:'/techServicedetaails',name:'techServicedetaails', component:()=>import('../components/TechServiceDetails.component.vue')},
    {path: '/oservationform',name: 'oservation',component:()=>import('../components/ObservationForm.component.vue')},
+   {path: '/claimform',name: 'claim',component:()=>import('../components/ClaimForm.component.vue')},
   ]
 })
 
