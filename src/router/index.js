@@ -14,6 +14,7 @@ const router = createRouter({
    {path:'/techServicedetaails',name:'techServicedetaails', component:()=>import('../components/TechServiceDetails.component.vue')},
    {path: '/oservationform',name: 'oservation',component:()=>import('../components/ObservationForm.component.vue')},
    {path: '/claimform',name: 'claim',component:()=>import('../components/ClaimForm.component.vue')},
+   {path: '/servicelist',name: 'servicelist',component:()=>import('../components/ServicesList.component.vue')},
   ]
 })
 
