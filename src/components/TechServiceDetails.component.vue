@@ -1,10 +1,10 @@
 <template>
     
     <div id="servicecard">
-        <div class="service-card">
-      <div class="service-card-header">
+        <div class="service-card-header">
         <p class="service-card-title">Servicio Técnico</p>
-      </div>
+        </div>
+        <div class="service-card">
       <div class="service-card-body">
         <div class="service-card-details">
           <p class="service-card-detail">Nombre Servicio Técnico</p>
@@ -65,7 +65,7 @@
     height: 100%;
     margin: 0 auto;
     align-items: center;
-    margin-left: 15%;
+    margin-left: 10%;
     border-radius: 0.5rem;
     border-radius: 16px;
     border: 1px solid rgba(0, 0, 0, 0.50);
@@ -73,19 +73,17 @@
   }
   
   .service-card-header {
-    display: flex;
     justify-content: space-between;
-    align-items: left;
-    padding-left: 1rem;
     width: 100%;
     align-content: center;
   }
   
   .service-card-title {
+    margin-left: 10%;
     font-weight: bold;
     text-align: left;
     font-family: "Nunito Sans", sans-serif;
-    font-size: 60px;
+    font-size: 65px;
     font-style: normal;
     font-weight: 700;
     line-height: 82%;
