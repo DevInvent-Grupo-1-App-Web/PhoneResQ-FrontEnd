@@ -11,6 +11,7 @@ const router = createRouter({
       component: useraccountcomponent
     },
    {path:'/search',name:'search',component:searchcomponent},
+   {path:'/techServicedetaails',name:'techServicedetaails', component:()=>import('../components/TechServiceDetails.component.vue')},
   ]
 })
 
