@@ -67,20 +67,21 @@
   .form{
     display: flex;
     width: 100%;
-    height: 90%;
+    height: 100%;
     flex-direction: column;
     align-items: flex-start;
     flex-shrink: 0;
     fill: #FFF;
     filter: drop-shadow(2px 69px 42px rgba(200, 200, 200, 0.25));
+    margin: 38.7px;
+
 
   }
   #appuser {
+    margin: 38.7px;
     font-family: 'Nunito Sans', sans-serif;
     text-align: left;
     color: #2c3e50;
-    margin-top: 60px;
-    margin-bottom: 60px;
     flex-shrink: 0;
     fill: #FFF;
     filter: drop-shadow(0px 69px 42px rgba(200, 200, 200, 0.25));
@@ -90,9 +91,9 @@
         width: 100%;
         gap: 50px;
         text-align: left;
-        margin-bottom: 50px;
-        height: 100%;
-       margin-top: 40px
+        height: 80%;
+       margin: 38.7px;
+
     }
   h2 {
     text-align: left;
@@ -105,16 +106,18 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: flex;
+    margin-left: 90px;
+    margin-bottom: -95px;
   }
   
   .info-row {
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
     flex-shrink: 0;
+    margin: 38.7px;
+
     
   }
   
@@ -125,21 +128,29 @@
     flex-shrink: 0;
     
   }
-  
-  input, select {
+  div.form{
+
     width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    fill: #FFF;
+    margin: 38.7px;
+  filter: drop-shadow(0px 69px 42px rgba(200, 200, 200, 0.25));
+  }
+  input, select {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+    width: 50%;
     padding: 10px; 
     border: 1px solid #ccc;
     border-radius: 10px;
-    justify-content: center;
     flex-shrink: 0;
     color: #403F3F;
     font-family: 'Mulish', sans-serif;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: lowercase;
+    height: 80%;
+    flex-shrink: 0;
   }
   
   button {
