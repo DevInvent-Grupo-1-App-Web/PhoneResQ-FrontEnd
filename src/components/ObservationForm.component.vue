@@ -128,7 +128,7 @@ div.container{
   .btn-primary {
     margin-right: 50px;
     margin-left: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 31px;
     display: inline-flex;
     color: #ccc;
     padding: 16px 80px;
