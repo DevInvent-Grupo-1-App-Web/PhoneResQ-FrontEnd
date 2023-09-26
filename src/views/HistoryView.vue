@@ -1,15 +1,9 @@
-<script setup>
-
-</script>
 <template>
-<NavbarMain :items="[
-    { label: 'Inicio', route: '/' },
-    { label: 'Historial', route: '/history' },
-    { label: 'Notificaciones', route: '/notifications'},
-    {label: 'Perfil', route: '/profile'},
-    {label: 'Contacto', route: '/contact'}
-  ]" />
+  <p>History view is here!</p>
 </template>
 
-<style>
-</style>
+<script>
+  export default {
+      name: 'HistoryView'
+  }
+</script>

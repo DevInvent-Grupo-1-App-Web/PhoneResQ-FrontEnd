@@ -33,13 +33,8 @@ import "../assets/theme.css"
   </main>
 </template>
 
-<style></style>
-
 <script>
-export default {
-  name: "HomeView",
-  components: {
-    NavbarMain,
-  },
-};
+  export default {
+      name: 'HomeView'
+  }
 </script>
