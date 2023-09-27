@@ -8,17 +8,17 @@ import "primeicons/primeicons.css";
   <Menubar id="menubar">
     <template #start>
       <div class="navbar-link-container">
-        <RouterLink class="navbar-link" :to="'/history'">History</RouterLink>
-        <RouterLink class="navbar-link" :to="'/notifications'">Notificaciones</RouterLink>
-        <RouterLink class="navbar-link" :to="'/contact'">Contacto</RouterLink>
-        <RouterLink class="navbar-link" :to="'/account'">Cuenta</RouterLink>
         <RouterLink class="navbar-link" :to="'/'">Inicio</RouterLink>
+        <RouterLink class="navbar-link" :to="'/history'">Historial</RouterLink>
+        <RouterLink class="navbar-link" :to="'/notifications'">Notificacion</RouterLink>
+        <RouterLink class="navbar-link" :to="'/account'">Perfil</RouterLink>
+        <RouterLink class="navbar-link" :to="'/contact'">Contacto</RouterLink>
       </div>
     </template>
 
     <template #end>
       <i class="pi pi-search" />
-      <i class="pi pi-user" />
+      <i class="pi pi-shopping-bag" />
     </template>
   </Menubar>
 </template>
@@ -39,10 +39,12 @@ export default {
 
 #menubar {
   background-color: #243347;
+  opacity: 0.8;
   font-family: "Almarai", sans-serif;
   border-radius: 0;
   border: none;
   display: flex;
+  padding: 0 15% 0 36.75%; /* TO-DO */
 }
 
 .navbar-link-container {
@@ -54,14 +56,14 @@ export default {
 }
 
 .navbar-link {
-  font-size: 1rem;
+  font-size: 0.8rem;
   padding: 0 20px 0 20px;
   color: #ffffff;
   text-decoration: none;
 }
 
 .pi {
-  font-size: 1.5rem;
+  font-size: 0.8rem;
   padding: 0 20px 0 20px;
   color: #ffffff;
 }
