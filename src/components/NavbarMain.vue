@@ -5,14 +5,14 @@ import "primeicons/primeicons.css";
 </script>
 
 <template>
-  <Menubar>
+  <Menubar id="menubar">
     <template #start>
-      <div class="center-links">
-        <RouterLink :to="'/'">Inicio</RouterLink>
-        <RouterLink :to="'/history'">History</RouterLink>
-        <RouterLink :to="'/notifications'">Notificaciones</RouterLink>
-        <RouterLink :to="'/contact'">Contacto</RouterLink>
-        <RouterLink :to="'/account'">Cuenta</RouterLink>
+      <div class="navbar-link-container">
+        <RouterLink class="navbar-link" :to="'/history'">History</RouterLink>
+        <RouterLink class="navbar-link" :to="'/notifications'">Notificaciones</RouterLink>
+        <RouterLink class="navbar-link" :to="'/contact'">Contacto</RouterLink>
+        <RouterLink class="navbar-link" :to="'/account'">Cuenta</RouterLink>
+        <RouterLink class="navbar-link" :to="'/'">Inicio</RouterLink>
       </div>
     </template>
 
@@ -37,14 +37,32 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Almarai&family=Nunito+Sans:opsz@6..12&display=swap');
 
-#navbar-logo {
-  width: auto;
-  height: 2rem;
+#menubar {
+  background-color: #243347;
+  font-family: "Almarai", sans-serif;
+  border-radius: 0;
+  border: none;
+  display: flex;
 }
 
+.navbar-link-container {
+  font-family: "Almarai", sans-serif;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  float: center;
+}
+
+.navbar-link {
+  font-size: 1rem;
+  padding: 0 20px 0 20px;
+  color: #ffffff;
+  text-decoration: none;
+}
 
 .pi {
   font-size: 1.5rem;
   padding: 0 20px 0 20px;
+  color: #ffffff;
 }
 </style>
