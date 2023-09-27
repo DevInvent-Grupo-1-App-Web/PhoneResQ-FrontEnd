@@ -1,35 +1,54 @@
-@import './base.css';
+@import 'primevue/resources/themes/lara-light-indigo/theme.css';
+@import 'colors.module.css';
+@import 'theme.css';
+@import 'theme.dark.css';
+@import 'theme.light.css';
+@import 'tokens.css';
+@import 'typography.module.css';
+@import 'primevue/resources/primevue.min.css';
+@import 'primeicons/primeicons.css';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
 
-  font-weight: normal;
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+
+
+.layout-vertical {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.layout-horizontal {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.layout-centered {
+  display: flex;
+  align-items: center;
 }
+
+.layout-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.layout-center-vertical {
+  align-items: center;
+}
+
+.layout-center-horizontal {
+  justify-content: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
