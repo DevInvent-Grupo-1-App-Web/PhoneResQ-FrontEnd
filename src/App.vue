@@ -9,7 +9,7 @@ import NavbarMain from './components/NavbarMain.vue';
   <RouterView />
 </template>
 
-<style scoped>
+<style>
 </style>
 
 <script>
