@@ -38,7 +38,7 @@ const router = createRouter({
       path: '/mensajes/:id',
       name: 'mensaje',
       //component: () => import('../views/MessageView.vue')
-    }
+    },
     {
       path: '/recuperar-cuenta',
       name: 'recuperar-cuenta',
