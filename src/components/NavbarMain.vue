@@ -9,10 +9,9 @@ import "primeicons/primeicons.css";
     <template #start>
       <div class="navbar-link-container">
         <RouterLink class="navbar-link" :to="'/'">Inicio</RouterLink>
-        <RouterLink class="navbar-link" :to="'/history'">Historial</RouterLink>
-        <RouterLink class="navbar-link" :to="'/notifications'">Notificacion</RouterLink>
-        <RouterLink class="navbar-link" :to="'/account'">Perfil</RouterLink>
-        <RouterLink class="navbar-link" :to="'/contact'">Contacto</RouterLink>
+        <RouterLink class="navbar-link" :to="'/servicios'">Servicios</RouterLink>
+        <RouterLink class="navbar-link" :to="'/mensajes'">Mensajes</RouterLink>
+        <RouterLink class="navbar-link" :to="'/mi-cuenta'">Mi cuenta</RouterLink>
       </div>
     </template>
 

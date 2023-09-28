@@ -6,23 +6,18 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'inicio',
       component: HomeView
     },
     {
-      path: '/history',
-      name: 'history',
-      component: () => import('../views/HistoryView.vue')
+      path: '/servicios',
+      name: 'servicios',
+      component: () => import('../views/ServicesView.vue')
     },
     {
-      path: '/account',
-      name: 'account',
+      path: '/mi-cuenta',
+      name: 'mi-cuenta',
       component: () => import('../views/AccountView.vue')
-    },
-    {
-      path: '/contact',
-      name: 'contact',
-      component: () => import('../views/ContactView.vue')
     },
     {
       path: '/login',
@@ -30,24 +25,39 @@ const router = createRouter({
       component: () => import('../views/LoginView.vue')
     },
     {
-      path: '/register',
-      name: 'register',
+      path: '/registro',
+      name: 'registro',
       component: () => import('../views/RegisterView.vue')
     },
     {
-      path: '/messages',
-      name: 'messages',
+      path: '/mensajes',
+      name: 'mensajes',
       component: () => import('../views/MessagesView.vue')
     },
     {
-      path: '/notifications',
-      name: 'notifications',
-      component: () => import('../views/NotificationsView.vue')
+      path: '/recuperar-cuenta',
+      name: 'recuperar-cuenta',
+      component: () => import('../views/RecoverAccountView.vue')
     },
     {
-      path: '/recover',
-      name: 'recover',
-      component: () => import('../views/RecoverAccountView.vue')
+      path: '/servicios/:id',
+      name: 'servicio',
+      component: () => import('../views/ServiceView.vue')
+    },
+    {
+      path: '/registrar-reclamo',
+      name: 'registrar-reclamo',
+      component: () => import('../views/ClaimFormView.vue')
+    },
+    {
+      path: '/registrar-observacion',
+      name: 'registrar-observacion',
+      component: () => import('../views/ObservationFormView.vue')
+    },
+    {
+      path: '/perfil/:username',
+      name: 'perfil',
+      component: () => import('../views/ProfileView.vue')
     },
     {
       path: '/:pathMatch(.*)*',
