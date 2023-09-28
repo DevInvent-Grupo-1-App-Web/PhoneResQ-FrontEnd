@@ -5,7 +5,7 @@
         <a href="AndroidOptionsView.vue">
           <img src= 'src\assets\Andorid-button.png' alt="Android">
         </a>
-        <a href="iOSoptionsView.vue">
+        <a href="/iphonemodels">
           <img src="src\assets\iOS-button.png" alt="iOS">
         </a>
       </div>
