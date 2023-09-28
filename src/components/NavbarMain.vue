@@ -15,11 +15,6 @@ import "primeicons/primeicons.css";
         <RouterLink class="navbar-link" :to="'/contact'">Contacto</RouterLink>
       </div>
     </template>
-
-    <template #end>
-      <i class="pi pi-search" />
-      <i class="pi pi-shopping-bag" />
-    </template>
   </Menubar>
 </template>
 
@@ -45,6 +40,7 @@ export default {
   border: none;
   display: flex;
   padding: 0 15% 0 36.75%; /* TO-DO */
+  margin-bottom: 3rem;
 }
 
 .navbar-link-container {
@@ -60,11 +56,5 @@ export default {
   padding: 0 20px 0 20px;
   color: #ffffff;
   text-decoration: none;
-}
-
-.pi {
-  font-size: 0.8rem;
-  padding: 0 20px 0 20px;
-  color: #ffffff;
 }
 </style>
