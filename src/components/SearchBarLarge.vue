@@ -14,7 +14,7 @@
         </div>
         <div class="param-box layout-horizontal">
             <i class="pi pi-calendar"/>
-            <input type="text" placeholder="Fecha">
+            <input type="date" placeholder="Fecha">
         </div>
         <button class="search-button btn btn-primary" type="submit">Buscar</button>
     </div>
@@ -50,7 +50,6 @@
     }
     .pi {
         font-size: medium;
-        font-size: ;
         padding: 0px 1rem;
         width: auto;
         box-sizing: border-box;
