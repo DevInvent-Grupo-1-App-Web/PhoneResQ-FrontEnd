@@ -3,10 +3,10 @@
       <h1 class="titlename">¿Qué sistema operativo usas?</h1>
       <div class="options">
         <a href="AndroidOptionsView.vue">
-          <img src= 'src\assets\Andorid-button.png' alt="Android">
+          <img src= '/andoridbutton.png' alt="Android">
         </a>
         <a href="/iphonemodels">
-          <img src="src\assets\iOS-button.png" alt="iOS">
+          <img src="/iosbutton.png" alt="iOS">
         </a>
       </div>
     </div>
