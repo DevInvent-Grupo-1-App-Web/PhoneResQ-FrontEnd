@@ -4,10 +4,10 @@
         <div class="service-card-header">
         <p class="service-card-title">Servicio Técnico</p>
         </div>
+        <p class="service-name">Nombre Servicio Técnico</p>
         <div class="service-card">
       <div class="service-card-body">
         <div class="service-card-details">
-          <p class="service-card-detail">Nombre Servicio Técnico</p>
           <p class="service-card-detail">Servicio 01</p>
           <p class="service-card-detail">Dueño: Cinderella</p>
           <p class="service-card-detail">Estado: En reparación</p>
@@ -70,6 +70,15 @@
     border-radius: 16px;
     border: 1px solid rgba(0, 0, 0, 0.50);
     background: var(--Purple-White, #F6F6FE);
+  }
+  .service-name{
+    color: #243347;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 10.5%;
   }
   
   .service-card-header {
