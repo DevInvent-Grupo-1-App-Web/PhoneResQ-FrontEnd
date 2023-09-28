@@ -1,30 +1,35 @@
 <template>
-    <div class="container">
-        
-      <div class="header">
-        <h1>¿Cuál es tu problema?</h1>
-      </div>
-      <div class="body">
-       </div>
-        <div class="problemas">
-            <div class="telinfo">
+  <div class="container">
+    <div class="header">
+      <h1>¿Cuál es tu problema?</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
         <img :src="image" alt="Imagen del modelo">
-      <p>{{ modelName }}</p>
-          <ul>
-            <li v-for="problema in problemas" :key="problema.id">
-              <input type="checkbox" :value="problema.id" v-model="problemasSeleccionados">
-              {{ problema.nombre }}
-            </li>
-          </ul>
-        </div>
-        <div class="otro">
-          <input type="checkbox" id="otro" value="otro" v-model="otroSeleccionado">
-          <label for="otro">Otro</label>
-          <input type="text" v-if="otroSeleccionado" placeholder="Escribe tu problema">
+        <p>{{ modelName }}</p>
+      </div>
+      <div class="col-md-6">
+        <div class="problemas">
+          <div class="telinfo">
+            <ul>
+              <li v-for="problema in problemas" :key="problema.id">
+                <input type="checkbox" :value="problema.id" v-model="problemasSeleccionados">
+                {{ problema.nombre }}
+              </li>
+            </ul>
+          </div>
+          <div class="otro">
+            <input type="checkbox" id="otro" value="otro" v-model="otroSeleccionado">
+            <label for="otro">Otro</label>
+            <input type="text" v-if="otroSeleccionado" placeholder="Escribe tu problema">
+          </div>
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
+
+
   
   <script>
   export default {
@@ -61,69 +66,63 @@
   </script>
   
   <style scoped>
-  .telinfo{
-    align-items: left;
-
-  }
-  div.telinfo{
-
-    margin-left: -50%;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
   
-  .container {
-    width: 400px;
-    margin: 0 auto;
-  }
   
+  p{
+    margin-top: 5%;
+    font-size: 30px;
+  }
   .header {
+    margin-top: -8%;
     text-align: center;
+    margin-bottom: 50px;
   }
-  
-  .body {
-    padding: 20px;
-  }
-  
-  .problemas {
-    list-style: none;
-    margin: 0 0 20px 0;
-  }
-  img{
-    margin-top: 20%;
-    width: 22%;
+  ul {
+    list-style-type: none;
     align-items: left;
-    height: 10%;
-    display: flex;
+    text-align: left;
   }
-  
-  .problemas li {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .problemas li input {
-    margin-right: 10px;
-  }
-  
-  .otro {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .otro input {
-    margin-right: 10px;
-  }
-  
-  input[type="checkbox"] {
-    cursor: pointer;
-  }
+  .container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+img {
+  width: auto;
+  height: 30%;
+  margin-top: 10%;
+}
+.container .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+input{
+  width: auto;
+  height: auto;
+  margin-right: 10%;
+}
+li {
+  margin-top: 10%;
+  align-items: center;
+  text-align: left;
+  display: flex;
+}
+.otro{
+  margin-top: 10%;
+  align-items: center;
+  text-align: left;
+  display: flex;
+  margin-left: 11%;
+}
+div.col-md-6{
+  margin-left: -5%;
+}
+
+.container .row .col-md-6 {
+  text-align: center;
+}
+
   </style>
   
