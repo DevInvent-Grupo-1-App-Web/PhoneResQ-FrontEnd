@@ -1,0 +1,54 @@
+@import 'primevue/resources/themes/lara-light-indigo/theme.css';
+@import 'colors.module.css';
+@import 'theme.css';
+@import 'theme.dark.css';
+@import 'theme.light.css';
+@import 'tokens.css';
+@import 'typography.module.css';
+@import 'primevue/resources/primevue.min.css';
+@import 'primeicons/primeicons.css';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
+
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+.layout-vertical {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.layout-horizontal {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.layout-centered {
+  display: flex;
+  align-items: center;
+}
+
+.layout-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.layout-center-vertical {
+  align-items: center;
+}
+
+.layout-center-horizontal {
+  justify-content: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito Sans', sans-serif;
+}
+

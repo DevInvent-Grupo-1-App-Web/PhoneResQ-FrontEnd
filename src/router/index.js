@@ -1,18 +1,59 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import useraccountcomponent from '../components/UserAccount.component.vue'
-import searchcomponent from '../components/SearchSystem.component.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/myaccount',
-      name: 'myaccount',
-      component: useraccountcomponent
+      path: '/',
+      name: 'home',
+      component: HomeView
     },
-   {path:'/search',name:'search',component:searchcomponent},
-   {path:'/techServicedetaails',name:'techServicedetaails', component:()=>import('../components/TechServiceDetails.component.vue')},
-   {path: '/oservationform',name: 'oservation',component:()=>import('../components/ObservationForm.component.vue')},
+    {
+      path: '/history',
+      name: 'history',
+      component: () => import('../views/HistoryView.vue')
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: () => import('../views/AccountView.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/ContactView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/RegisterView.vue')
+    },
+    {
+      path: '/messages',
+      name: 'messages',
+      component: () => import('../views/MessagesView.vue')
+    },
+    {
+      path: '/notifications',
+      name: 'notifications',
+      component: () => import('../views/NotificationsView.vue')
+    },
+    {
+      path: '/recover',
+      name: 'recover',
+      component: () => import('../views/RecoverAccountView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue')
+    }
   ]
 })
 
