@@ -88,9 +88,9 @@
   margin: 0 auto;
 }
 img {
-  width: auto;
-  height: 30%;
-  margin-top: 10%;
+  max-width: 95%; 
+  max-height: 40%;
+  margin-top: 8%;
 }
 .container .row {
   display: flex;
