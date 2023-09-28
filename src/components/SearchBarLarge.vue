@@ -4,31 +4,65 @@
 
 <template>
     <div class="search-bar layout-horizontal layout-center">
-        <div class="layout-horizontal">
-            <i class="pi pi-search" style="font-size: medium;"/>
+        <div class="param-box layout-horizontal">
+            <i class="pi pi-search"/>
             <input type="text" placeholder="Búsqueda">
         </div>
-        <div class="layout-horizontal">
-            <i class="pi pi-map-marker" style="font-size: medium;"/>
+        <div class="param-box layout-horizontal">
+            <i class="pi pi-map-marker"/>
             <input type="text" placeholder="Distrito">
         </div>
-        <div class="layout-horizontal">
-            <i class="pi pi-calendar" style="font-size: medium;"/>
+        <div class="param-box layout-horizontal">
+            <i class="pi pi-calendar"/>
             <input type="text" placeholder="Fecha">
         </div>
-        <button class="btn btn-primary" type="submit">Buscar</button>
+        <button class="search-button btn btn-primary" type="submit">Buscar</button>
     </div>
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    .param-box {
+            padding: 0px;
+            width: 30%;
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+    }
+    input {
+        font-family: 'Poppins', sans-serif;
+        width: 100%;
+        font-size: 1rem;
+        padding: 0px 1rem;
+        border: 0px;
+        color: #c0c0c0;
+    }
+    .search-button {
+        padding: 0px;
+        margin: 0px;
+        width: 10%;
+        height: 100%;
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        background-color: #243347;
+        color: white;
+        font-size: 1rem;
+    }
     .pi {
-        padding: 0px 0.5rem;
+        font-size: medium;
+        font-size: ;
+        padding: 0px 1rem;
+        width: auto;
+        box-sizing: border-box;
+        align-self: center;
+        color: #c0c0c0;
     }
     .search-bar {
         width: 100%;
-        padding: 0.5rem;
-        background-color: var(--surface-1);
-        border-radius: 0.5rem;
+        height: 2.5rem;
+        margin: 0px;
+        border-radius: 0.2rem;
+        font-family: 'Poppins', sans-serif;
+        border: 1px solid #e5e5e5;
     }
 
 </style>

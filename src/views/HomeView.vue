@@ -13,15 +13,51 @@ import "../assets/theme.css"
         tu disposición
       </p>
     </div>
-
+    <div class="searchbar-wrapper">
     <SearchBarLarge> </SearchBarLarge>
+    </div>
     <div style="width: 70%" class="v-sp-1">
       <h2 style="text-align: center;">Búsqueda reciente</h2>
+      <ServiceCard> </ServiceCard>
+      <ServiceCard> </ServiceCard>
+      <ServiceCard> </ServiceCard>
+      <ServiceCard> </ServiceCard>
+      <ServiceCard> </ServiceCard>
+      <ServiceCard> </ServiceCard>
       <ServiceCard> </ServiceCard>
       <ServiceCard> </ServiceCard>
     </div>
   </main>
 </template>
+
+<style scoped>
+main {
+  background-image: url("../assets/vector-world-map-v2.2-blank.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  margin-top: 7rem;
+  margin-bottom: 0;
+  background: linear-gradient(180deg, #243347, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+p {
+  font-size: 1.25rem;
+  margin: 0px;
+}
+.searchbar-wrapper {
+  width: 70%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+</style>
 
 <script>
   export default {

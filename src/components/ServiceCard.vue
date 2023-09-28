@@ -34,10 +34,15 @@
     }
     .service-card {
         width: 100%;
-        margin: 0.5rem;
-        border-radius: 0.5rem;
+        border-radius: 1rem;
         background-color: #F6F6FE;
         justify-content: space-around;
+        box-sizing: border-box;
+        margin: 0.5rem 0px;
+        border: 1px solid #888888;
+    }
+    div>a {
+        color: #7C8DB0;
     }
 </style>
 
