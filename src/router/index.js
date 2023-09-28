@@ -35,6 +35,11 @@ const router = createRouter({
       component: () => import('../views/MessagesView.vue')
     },
     {
+      path: '/mensajes/:id',
+      name: 'mensaje',
+      //component: () => import('../views/MessageView.vue')
+    }
+    {
       path: '/recuperar-cuenta',
       name: 'recuperar-cuenta',
       component: () => import('../views/RecoverAccountView.vue')
@@ -42,7 +47,7 @@ const router = createRouter({
     {
       path: '/servicios/:id',
       name: 'servicio',
-      component: () => import('../views/ServiceView.vue')
+      component: () => import('../views/ServicesView.vue')
     },
     {
       path: '/registrar-reclamo',
@@ -57,7 +62,7 @@ const router = createRouter({
     {
       path: '/perfil/:username',
       name: 'perfil',
-      component: () => import('../views/ProfileView.vue')
+      //component: () => import('../views/ProfileView.vue')
     },
     {
       path: '/:pathMatch(.*)*',
