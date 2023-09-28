@@ -14,13 +14,13 @@
         </div>
         <div class="param-box layout-horizontal">
             <i class="pi pi-calendar"/>
-            <input type="text" placeholder="Fecha">
+            <input type="date" placeholder="Fecha">
         </div>
         <button class="search-button btn btn-primary" type="submit">Buscar</button>
     </div>
 </template>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     .param-box {
             padding: 0px;
@@ -49,7 +49,6 @@
     }
     .pi {
         font-size: medium;
-        font-size: ;
         padding: 0px 1rem;
         width: auto;
         box-sizing: border-box;

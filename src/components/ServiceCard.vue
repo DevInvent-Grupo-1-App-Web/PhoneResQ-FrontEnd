@@ -18,7 +18,7 @@
     </div>
 </template>
 
-<style scoped>
+<style>
     .support-center-name {
         margin: 0px;
     }

@@ -30,7 +30,7 @@ import "../assets/theme.css"
   </main>
 </template>
 
-<style scoped>
+<style>
 main {
   background-image: url("../assets/vector-world-map-v2.2-blank.png");
   background-repeat: no-repeat;

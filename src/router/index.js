@@ -53,7 +53,24 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('../views/NotFoundView.vue')
+    },
+    {
+      path: '/sisopchoose',
+      name: 'sisopchoose',
+      component: () => import('../views/SistemOpChooseView.vue')
+    },
+    {
+      path: '/iphonemodels',
+      name: 'iphonemodels',
+      component: () => import('../views/iOSoptionsView.vue')
+
+    },
+    {
+       path: '/phoneproblems',
+        name: 'phoneproblems',
+        component: () => import('../views/PhoneProblemsSelectionView.vue')
     }
+
   ]
 })
 
