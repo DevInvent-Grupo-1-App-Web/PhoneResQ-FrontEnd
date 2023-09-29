@@ -109,9 +109,11 @@ export default {
       }
     },
     sesionIniciadaCliente() {
+      this.$emit("value-received", true);
       this.$router.push({name: 'inicio'});
     },
     sesionIniciadaTecnico() {
+      this.$emit("value-received", true);
       this.$router.push({name: 'inicio'});
     },
     volverInicio() {

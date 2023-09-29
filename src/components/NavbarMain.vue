@@ -3,7 +3,6 @@ import Menubar from "primevue/menubar";
 import { RouterLink } from "vue-router";
 import "primeicons/primeicons.css";
 </script>
-
 <template>
   <Menubar id="menubar">
     <template #start>

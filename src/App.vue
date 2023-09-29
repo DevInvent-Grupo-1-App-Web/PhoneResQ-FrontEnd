@@ -4,21 +4,30 @@ import NavbarMain from './components/NavbarMain.vue';
 
 <template>
   <header>
-    <NavbarMain/>
+    <NavbarMain v-if="authorized"/>
   </header>
-  <RouterView />
+  <RouterView v-on:value-received="authorize();"/>
 </template>
 
 <style>
 </style>
 
 <script>
-
   export default {
     name: 'App',
     components: {
       NavbarMain,
     },
+    data() {
+      return {
+        authorized: false
+      }
+    },
+    methods: {
+      authorize() {
+        this.authorized = true;
+      }
+    }
   }
 
 </script>
