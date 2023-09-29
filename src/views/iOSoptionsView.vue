@@ -194,7 +194,7 @@
   
   .iphone-selection-model img {
     width: auto;
-    
+    filter: brightness(1.1);
     height: 100%;
   }
   
