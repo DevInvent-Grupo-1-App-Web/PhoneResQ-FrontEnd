@@ -10,6 +10,11 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/inicio',
+      name: 'inicio',
+      component: HomeView
+    },
+    {
       path: '/servicios',
       name: 'servicios',
       component: () => import('../views/ServicesView.vue')
@@ -84,6 +89,31 @@ const router = createRouter({
        path: '/phoneproblems',
         name: 'phoneproblems',
         component: () => import('../views/PhoneProblemsSelectionView.vue')
+    },
+    {
+      path: '/androidbrandsoptions',
+      name: 'androidbrandsoptions',
+      component: () => import('../views/AndroidBrandsOptionsView.vue')
+    },
+    {
+      path: '/xiaomiphonelist',
+      name: 'xiaomiphonelist',
+      component: () => import('../views/XiaomiPhoneListView.vue')
+    },
+    {
+      path: '/samsungphoneslist',
+      name: 'samsungphonelist',
+      component: () => import('../views/SamsungPhoneListView.vue')
+    },
+    {
+      path: '/huaweiphoneslist',
+      name: 'huaweiphoneslist',
+      component: () => import('../views/HuaweiPhoneListView.vue')
+    },
+    {
+      path: '/motorolaphoneslist',
+      name: 'motorolaphoneslist',
+      component: () => import('../views/MotorolaPhoneListView.vue')
     }
 
   ]

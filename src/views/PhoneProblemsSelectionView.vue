@@ -24,15 +24,18 @@
             <input type="text" v-if="otroSeleccionado" placeholder="Escribe tu problema">
           </div>
         </div>
+        <button class="btn btn-primary" @click="guardar">Empezar</button>
       </div>
     </div>
   </div>
 </template>
 
 
+
   
   <script>
   export default {
+    
     data() {
       return {
         problemas: [
@@ -61,19 +64,32 @@
           this.problemasSeleccionados = [];
         }
       },
+      guardar() {
+      alert('Guardado correctamente');
+      this.$router.push({ name: 'inicio' });
+      }
     },
   };
   </script>
   
   <style scoped>
+  div.header{
+    margin-bottom: -8%;
+  }
+  .row{
+    align-items: center;
+    margin-left: 20%;
+  }
   
-  
+  h1{
+    font-size: 6vw;
+  }
   p{
     margin-top: 5%;
     font-size: 30px;
   }
   .header {
-    margin-top: -8%;
+      margin-top: -8%;
     text-align: center;
     margin-bottom: 50px;
   }
@@ -86,17 +102,20 @@
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  margin-bottom: 20%;
 }
 img {
-  max-width: 95%; 
-  max-height: 40%;
-  margin-top: 8%;
+  width: 100%;
+  min-height: 350px;
+  max-height: 450px;
+  object-fit: cover;
+  object-position: bottom;
 }
 .container .row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid #ccc;
+  margin-top: 14%;
 }
 input{
   width: auto;
