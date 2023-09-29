@@ -24,7 +24,7 @@
             <input type="text" v-if="otroSeleccionado" placeholder="Escribe tu problema">
           </div>
         </div>
-        <button class="btn btn-primary" @click="guardar">Empezar</button>
+        <button class="empezar" @click="guardar">Empezar</button>
       </div>
     </div>
   </div>
@@ -73,6 +73,21 @@
   </script>
   
   <style scoped>
+  .empezar{
+    display: flex;
+    margin-top: 5%;
+    margin-left: 10%;
+    cursor: pointer;
+    height: 50px;
+    width: 150px;
+    padding: 25px 38px 26px 38px;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    gap: 10px;
+    border-radius: 50px;
+    background: #243347;
+  }
   div.header{
     margin-bottom: -8%;
   }
