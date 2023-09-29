@@ -1,3 +1,8 @@
+<script setup>
+import "primeicons/primeicons.css";
+
+</script>
+
 <template>
   <div id="appuser">
     <h2>Mi cuenta</h2>
@@ -49,7 +54,7 @@
     },
     methods: {
       cerrarSesion() {
-        // Cierra la sesión del usuario
+        this.$router.push({ name: 'login' });
       }
     }
   };
