@@ -39,9 +39,9 @@ import "primeicons/primeicons.css";
       <a>Todavía no te has registrado?</a><a @click="registraCliente">Crear Cuenta</a>
       <div class="info-row">
         <label>Correo Electrónico</label>
-        <input type="text">
+        <input type="text" v-model="correoCliente">
         <label>Contraseña</label>
-        <input type="text">
+        <input type="password" v-model="contrasenaCliente">
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
         <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
@@ -58,9 +58,9 @@ import "primeicons/primeicons.css";
       <a>Todavía no te has registrado?</a><a @click="registraTecnico">Crear Cuenta</a>
       <div class="info-row">
         <label>Correo Electrónico</label>
-        <input type="text">
+        <input type="text" v-model="correoTecnico">
         <label>Contraseña</label>
-        <input type="text">
+        <input type="password" v-model="contrasenaTecnico">
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
         <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
@@ -69,7 +69,7 @@ import "primeicons/primeicons.css";
     </div>
   </div>
   </div>
-  
+
 
 </div>
 
@@ -119,14 +119,7 @@ export default {
         this.usuarioElige = 'inicio';
       }
     },
-    sesionIniciadaCliente() {
-      this.$emit("value-received", true);
-      this.$router.push({name: 'sisopchoose'});
-    },
-    sesionIniciadaTecnico() {
-      this.$emit("value-received", true);
-      this.$router.push({name: 'inicio'});
-    },
+
     volverInicio() {
       if (this.historialVistas.length > 1) {
         const vistaAnterior = this.historialVistas.pop();
@@ -134,6 +127,47 @@ export default {
       } else {
         this.usuarioElige = null; // Devuelve a la vista de inicio si el historial está vacío
       }
+    },
+
+
+    sesionIniciadaCliente() {
+      if (!this.validarCorreo(this.correoCliente)) {
+        alert("Correo electrónico no válido.");
+        return;
+      }
+      if (this.contrasenaCliente.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
+      else{
+        this.$emit("value-received", true);
+        this.$router.push({name: 'sisopchoose'});
+      }
+
+      // Resto de la lógica de inicio de sesión de cliente
+    },
+
+    // Para el login de técnico
+    sesionIniciadaTecnico() {
+      if (!this.validarCorreo(this.correoTecnico)) {
+        alert("Correo electrónico no válido.");
+        return;
+      }
+      if (this.contrasenaTecnico.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
+      else{
+        this.$emit("value-received", true);
+        this.$router.push({name: 'inicio'});
+      }
+
+      // Resto de la lógica de inicio de sesión de técnico
+    },
+
+    validarCorreo(correo) {
+      // Validar el correo para que termine en @gmail.com o @hotmail.com
+      return correo.endsWith("@gmail.com") || correo.endsWith("@hotmail.com");
     },
   }
 };
