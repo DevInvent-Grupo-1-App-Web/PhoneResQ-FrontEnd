@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import LoginView from '../views/LoginView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/inicio',
       name: 'inicio',
       component: HomeView
+    },
+    {
+      path: '/',
+      name: 'start',
+      component: LoginView
     },
     {
       path: '/servicios',
@@ -114,6 +120,21 @@ const router = createRouter({
       path: '/motorolaphoneslist',
       name: 'motorolaphoneslist',
       component: () => import('../views/MotorolaPhoneListView.vue')
+    },
+    {
+      path: '/forgotpassword',
+      name: 'forgotpassword',
+      component: () => import('../views/ForgotPasswordView.vue')
+    },
+    {
+      path: '/resetpassword',
+      name: 'resetpassword',
+      component: () => import('../views/ResetPasswordView.vue')
+    },
+    {
+      path: '/password-changed-successfully',
+      name: 'password-changed-successfully',
+      component: () => import('../views/PasswordChangedtSuccessfullyView.vue')
     },
     {
       path: '/reviewtechnician',
