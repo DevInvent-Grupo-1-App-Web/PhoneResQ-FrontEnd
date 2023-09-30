@@ -5,7 +5,7 @@ import "primeicons/primeicons.css";
 <template>
   <div class="container">
     <div class="image-container">
-      <img src="successfullypasswordchanged.jpg" alt="Woman holding a clipboard">
+      <img src="@/assets/successfullypasswordchanged.jpg" alt="Woman holding a clipboard">
     </div>
     <div class="content-container">
       <div v-if="usuarioElige === null" class="buttons">
@@ -84,6 +84,9 @@ export default {
       usuarioElige: null,
       historialVistas: ['inicio'],
     };
+  },
+  created() {
+    this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
   },
   methods: {
     eligeCliente() {

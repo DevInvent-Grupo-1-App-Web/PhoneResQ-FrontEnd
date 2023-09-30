@@ -28,7 +28,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue')
+      component: LoginView
     },
     {
       path: '/registracliente',
@@ -135,6 +135,11 @@ const router = createRouter({
       path: '/password-changed-successfully',
       name: 'password-changed-successfully',
       component: () => import('../views/PasswordChangedtSuccessfullyView.vue')
+    },
+    {
+      path: '/reviewtechnician',
+      name: 'reviewtechnician',
+      component: () => import('../views/RatingTechnician.vue')
     }
 
   ]
