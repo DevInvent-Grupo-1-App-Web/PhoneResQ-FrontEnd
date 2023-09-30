@@ -14,6 +14,7 @@ import "primeicons/primeicons.css";
       <button @click="eligeCliente">Cliente</button><br>
       <button @click="eligeTecnico">Técnico</button>
       </div>
+      
       <div v-else>
     <div class="account-info" v-if="usuarioElige === 'vistacliente'">
       <h3>Bienvenido a PhoneResQ</h3>
