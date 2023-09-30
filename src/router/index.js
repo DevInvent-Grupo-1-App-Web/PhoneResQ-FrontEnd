@@ -114,6 +114,11 @@ const router = createRouter({
       path: '/motorolaphoneslist',
       name: 'motorolaphoneslist',
       component: () => import('../views/MotorolaPhoneListView.vue')
+    },
+    {
+      path: '/reviewtechnician',
+      name: 'reviewtechnician',
+      component: () => import('../views/RatingTechnician.vue')
     }
 
   ]

@@ -9,7 +9,7 @@
             </div>
             <div class="layout-vertical" style="width: 75%;">
                 <p class="support-center-name">Servicio técnico "Técnicos"</p>
-                <a style="font-size: small;">Más información</a>
+                <a style="font-size: small;" href="/reviewtechnician">Más información</a>
             </div>
             <div class="star-container layout-horizontal layout-center">
                 <i class="pi pi-star" style="font-size: small;"  v-for="i in [1,2,3,4,5]" v-bind:key="i" />
@@ -52,5 +52,7 @@
             name: 'ServiceCard',
             components: {
             },
+            methods: {
+            }
         }
 </script>
