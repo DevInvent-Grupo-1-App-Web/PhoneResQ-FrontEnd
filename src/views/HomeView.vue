@@ -32,7 +32,7 @@ import "../assets/theme.css"
 
 <style>
 main {
-  background-image: url("../assets/vector-world-map-v2.2-blank.png");
+  background-image: url("/vector-world-map-v2.2-blank.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
 }

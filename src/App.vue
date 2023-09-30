@@ -1,24 +1,27 @@
-<script setup>
-import NavbarMain from './components/NavbarMain.vue';
-</script>
-
 <template>
   <header>
-    <NavbarMain/>
+    <NavbarMain v-if="showNavbar" />
   </header>
-  <RouterView />
+  <RouterView v-on:value-received="updateNavbarVisibility" />
 </template>
 
-<style>
-</style>
-
 <script>
+import NavbarMain from './components/NavbarMain.vue';
 
-  export default {
-    name: 'App',
-    components: {
-      NavbarMain,
+export default {
+  name: 'App',
+  components: {
+    NavbarMain,
+  },
+  data() {
+    return {
+      showNavbar: true, // Inicialmente muestra el Navbar
+    };
+  },
+  methods: {
+    updateNavbarVisibility(value) {
+      this.showNavbar = value; // Actualiza la visibilidad del Navbar según el valor recibido
     },
-  }
-
+  },
+};
 </script>

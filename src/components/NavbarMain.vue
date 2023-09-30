@@ -3,12 +3,11 @@ import Menubar from "primevue/menubar";
 import { RouterLink } from "vue-router";
 import "primeicons/primeicons.css";
 </script>
-
 <template>
   <Menubar id="menubar">
     <template #start>
       <div class="navbar-link-container">
-        <RouterLink class="navbar-link" :to="'/'">Inicio</RouterLink>
+        <RouterLink class="navbar-link" :to="'/inicio'">Inicio</RouterLink>
         <RouterLink class="navbar-link" :to="'/servicios'">Servicios</RouterLink>
         <RouterLink class="navbar-link" :to="'/mensajes'">Mensajes</RouterLink>
         <RouterLink class="navbar-link" :to="'/mi-cuenta'">Mi cuenta</RouterLink>

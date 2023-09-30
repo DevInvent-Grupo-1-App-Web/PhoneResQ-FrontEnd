@@ -54,6 +54,7 @@ import "primeicons/primeicons.css";
     },
     methods: {
       cerrarSesion() {
+        this.$emit("value-received", false);
         this.$router.push({ name: 'login' });
       }
     }

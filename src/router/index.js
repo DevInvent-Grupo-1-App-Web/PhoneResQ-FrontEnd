@@ -1,13 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import LoginView from '../views/LoginView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/inicio',
       name: 'inicio',
       component: HomeView
+    },
+    {
+      path: '/',
+      name: 'start',
+      component: LoginView
     },
     {
       path: '/servicios',
@@ -22,7 +28,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue')
+      component: LoginView
     },
     {
       path: '/registracliente',
@@ -89,6 +95,51 @@ const router = createRouter({
        path: '/phoneproblems',
         name: 'phoneproblems',
         component: () => import('../views/PhoneProblemsSelectionView.vue')
+    },
+    {
+      path: '/androidbrandsoptions',
+      name: 'androidbrandsoptions',
+      component: () => import('../views/AndroidBrandsOptionsView.vue')
+    },
+    {
+      path: '/xiaomiphonelist',
+      name: 'xiaomiphonelist',
+      component: () => import('../views/XiaomiPhoneListView.vue')
+    },
+    {
+      path: '/samsungphoneslist',
+      name: 'samsungphonelist',
+      component: () => import('../views/SamsungPhoneListView.vue')
+    },
+    {
+      path: '/huaweiphoneslist',
+      name: 'huaweiphoneslist',
+      component: () => import('../views/HuaweiPhoneListView.vue')
+    },
+    {
+      path: '/motorolaphoneslist',
+      name: 'motorolaphoneslist',
+      component: () => import('../views/MotorolaPhoneListView.vue')
+    },
+    {
+      path: '/forgotpassword',
+      name: 'forgotpassword',
+      component: () => import('../views/ForgotPasswordView.vue')
+    },
+    {
+      path: '/resetpassword',
+      name: 'resetpassword',
+      component: () => import('../views/ResetPasswordView.vue')
+    },
+    {
+      path: '/password-changed-successfully',
+      name: 'password-changed-successfully',
+      component: () => import('../views/PasswordChangedtSuccessfullyView.vue')
+    },
+    {
+      path: '/reviewtechnician',
+      name: 'reviewtechnician',
+      component: () => import('../views/RatingTechnician.vue')
     }
 
   ]
