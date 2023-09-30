@@ -10,6 +10,11 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/',
+      name: 'home',
+      component: HomeView
+    },
+    {
       path: '/servicios',
       name: 'servicios',
       component: () => import('../views/ServicesView.vue')
@@ -114,6 +119,21 @@ const router = createRouter({
       path: '/motorolaphoneslist',
       name: 'motorolaphoneslist',
       component: () => import('../views/MotorolaPhoneListView.vue')
+    },
+    {
+      path: '/forgotpassword',
+      name: 'forgotpassword',
+      component: () => import('../views/ForgotPasswordView.vue')
+    },
+    {
+      path: '/resetpassword',
+      name: 'resetpassword',
+      component: () => import('../views/ResetPasswordView.vue')
+    },
+    {
+      path: '/password-changed-successfully',
+      name: 'password-changed-successfully',
+      component: () => import('../views/PasswordChangedtSuccessfullyView.vue')
     }
 
   ]
