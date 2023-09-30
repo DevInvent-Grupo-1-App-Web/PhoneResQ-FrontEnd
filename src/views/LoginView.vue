@@ -53,7 +53,7 @@ import "primeicons/primeicons.css";
       <p>Técnico</p>
       <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> Continuar con Google </a><br>
       <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> Continuar con Facebook </a><br>
-      <a>Todavía no te has registrado?</a><a @click="registraTecnico">Crear Cuenta</a>
+      <a>Todavía no te has registrado?</a><a @click="registraTecnico();">Crear Cuenta</a>
       <div class="info-row">
         <label>Correo Electrónico</label>
         <input type="text">
@@ -62,7 +62,7 @@ import "primeicons/primeicons.css";
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
         <a @click=""> ¿Has olvidado tu contraseña? </a><br>
-        <button @click="sesionIniciadaTecnico()">Iniciar Sesión</button>
+        <button @click="sesionIniciadaTecnico();">Iniciar Sesión</button>
       </div>
     </div>
   </div>
