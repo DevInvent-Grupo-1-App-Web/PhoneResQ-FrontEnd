@@ -85,6 +85,9 @@ export default {
       historialVistas: ['inicio'],
     };
   },
+  created() {
+    this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
+  },
   methods: {
     eligeCliente() {
       this.usuarioElige = 'vistacliente';
