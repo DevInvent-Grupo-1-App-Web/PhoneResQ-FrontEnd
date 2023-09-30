@@ -22,7 +22,6 @@
     justify-content: space-between;
     align-items: center;
     background: rgba(36, 51, 71, 0.80);
-
   
   }
   
