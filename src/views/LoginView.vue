@@ -42,7 +42,7 @@ import "primeicons/primeicons.css";
         <input type="text">
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
-        <a @click=""> ¿Has olvidado tu contraseña? </a><br>
+        <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
         <button @click="sesionIniciadaCliente">Iniciar Sesión</button>
       </div>
     </div>
@@ -61,7 +61,7 @@ import "primeicons/primeicons.css";
         <input type="text">
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
-        <a @click=""> ¿Has olvidado tu contraseña? </a><br>
+        <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
         <button @click="sesionIniciadaTecnico()">Iniciar Sesión</button>
       </div>
     </div>
@@ -110,7 +110,7 @@ export default {
     },
     sesionIniciadaCliente() {
       this.$emit("value-received", true);
-      this.$router.push({name: 'inicio'});
+      this.$router.push({name: 'sisopchoose'});
     },
     sesionIniciadaTecnico() {
       this.$emit("value-received", true);
