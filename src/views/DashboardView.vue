@@ -10,13 +10,25 @@
                     <p>Appointment Time</p>
                     <p>Appointment Location</p>
                 </div>
+                <div class="view-more">
+                    <button type="button">Más información</button>
+                </div>
             </div>
         </div>
         <div class="inventory-view">
-
+            <div class="inventory-item">
+                <img src="https://picsum.photos/200">
+                <div class="item-caption">
+                    <h4>Item</h4>
+                    <p>Stock available</p>
+                </div>
+                <div class="view-more">
+                    <button type="button">Ver más</button>
+                </div>
+            </div>
         </div>
         <div class="tracking-view">
-
+            
         </div>
     </div>
     
