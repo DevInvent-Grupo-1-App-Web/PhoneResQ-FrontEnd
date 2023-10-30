@@ -146,6 +146,11 @@ const router = createRouter({
       name: 'inventory',
       component: () => import('../views/InventoryView.vue')
     },
+    {
+      path: '/tracking/:id',
+      name: 'tracking',
+      component: () => import('../views/TrackingView.vue')
+    },
 
   ]
 })
