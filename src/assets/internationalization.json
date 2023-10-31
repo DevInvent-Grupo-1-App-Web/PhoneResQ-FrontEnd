@@ -1,0 +1,13 @@
+{
+    "es": {
+        "login": {
+            "welcomeToPhoneResQ": "Bienvenido a PhoneResQ"
+        }
+    },
+    "en":
+    {
+        "login": {
+            "welcomeToPhoneResQ": "Welcome to PhoneResQ"
+        }
+    }
+}

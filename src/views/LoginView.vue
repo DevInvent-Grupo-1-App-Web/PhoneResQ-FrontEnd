@@ -9,62 +9,62 @@ import "primeicons/primeicons.css";
     </div>
     <div class="content-container">
       <div v-if="usuarioElige === null" class="buttons">
-        <h3>Bienvenido a PhoneResQ</h3>
-      <p>Selecciona tu opción</p>
-      <button @click="eligeCliente">Cliente</button><br>
-      <button @click="eligeTecnico">Técnico</button>
+        <h3>{{ $t('session.welcomeToPhoneResQ') }}</h3>
+      <p>{{$t('session.chooseAnOption')}}</p>
+      <button @click="eligeCliente">{{ $t('global.client') }}</button><br>
+      <button @click="eligeTecnico">{{ $t('global.technician') }}</button>
       </div>
       <div v-else>
     <div class="account-info" v-if="usuarioElige === 'vistacliente'">
-      <h3>Bienvenido a PhoneResQ</h3>
-      <p>Cliente</p>
-      <button @click="volverInicio">Volver atrás</button><br>
-      <button @click="iniciaSesionCliente">Iniciar Sesión</button><br>
-      <button @click="registraCliente">Crear Cuenta</button>
+      <h3>{{ $t('session.welcomeToPhoneResQ') }}</h3>
+      <p>{{ $t('global.client') }}</p>
+      <button @click="volverInicio">{{ $t('global.goBack') }}</button><br>
+      <button @click="iniciaSesionCliente">{{ $t('global.logIn') }}</button><br>
+      <button @click="registraCliente">{{ $t('global.createAccount') }}</button>
     </div>
     <div class="account-info" v-if="usuarioElige === 'vistatecnico'">
-      <h3>Bienvenido a PhoneResQ</h3>
-      <p>Técnico</p>
-      <button @click="volverInicio">Volver atrás</button><br>
-      <button @click="iniciaSesionTecnico">Iniciar Sesión</button><br>
-      <button @click="registraTecnico">Crear Cuenta</button>
+      <h3>{{ $t('session.welcomeToPhoneResQ') }}</h3>
+      <p>{{ $t('global.technician') }}</p>
+      <button @click="volverInicio">{{ $t('global.goBack') }}</button><br>
+      <button @click="iniciaSesionTecnico">{{ $t('global.logIn') }}</button><br>
+      <button @click="registraTecnico">{{ $t('global.createAccount') }}</button>
     </div>
 
     <div class="account-info" v-if="usuarioElige === 'iniciaSesionCliente'">
-      <button @click="volverAtras">Volver atrás</button>
-      <h3>Ingrese a su cuenta</h3>
-      <p>Cliente</p>
-      <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> Continuar con Google </a><br>
-      <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> Continuar con Facebook </a><br>
-      <a>Todavía no te has registrado?</a><a @click="registraCliente">Crear Cuenta</a>
+      <button @click="volverAtras">{{ $t('global.goBack') }}</button>
+      <h3>{{ $t('global.logIn') }}</h3>
+      <p>{{ $t('global.client') }}</p>
+      <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> {{ $t('session.continueGoogle') }} </a><br>
+      <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> {{ $t('session.continueFacebook') }} </a><br>
+      <a>{{ $t('session.notRegisteredYet') }}</a><a @click="registraCliente">{{ $t('session.createAccount') }}</a>
       <div class="info-row">
-        <label>Correo Electrónico</label>
+        <label>{{ $t('session.email') }}</label>
         <input type="text">
-        <label>Contraseña</label>
+        <label>{{ $t('session.password') }}</label>
         <input type="text">
         <input type="checkbox" id="recordarme" >
-        <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
-        <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
-        <button @click="sesionIniciadaCliente">Iniciar Sesión</button>
+        <label for="recordarme" class="checkbox-label">{{ $t('session.rememberMe') }}</label>
+        <a href="forgotpassword"> {{ $t('session.haveForgotPassword') }} </a><br>
+        <button @click="sesionIniciadaCliente"> {{ $t('session.logIn') }} </button>
       </div>
     </div>
 
     <div class="account-info" v-if="usuarioElige === 'iniciaSesionTecnico'">
-      <button @click="volverAtras">Volver atrás</button>
-      <h3>Ingrese a su cuenta</h3>
-      <p>Técnico</p>
-      <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> Continuar con Google </a><br>
-      <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> Continuar con Facebook </a><br>
-      <a>Todavía no te has registrado?</a><a @click="registraTecnico">Crear Cuenta</a>
+      <button @click="volverAtras">{{ $t('global.goBack') }}</button>
+      <h3>{{ $t('global.logIn') }}</h3>
+      <p>{{ $t('global.technician') }}</p>
+      <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> {{ $t('session.continueGoogle') }} </a><br>
+      <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> {{ $t('session.continueFacebook') }} </a><br>
+      <a>{{ $t('session.notRegisteredYet') }}</a><a @click="registraTecnico">{{ $t('session.createAccount') }}</a>
       <div class="info-row">
-        <label>Correo Electrónico</label>
+        <label>{{ $t('session.email') }}</label>
         <input type="text">
-        <label>Contraseña</label>
+        <label>{{ $t('session.password') }}</label>
         <input type="text">
         <input type="checkbox" id="recordarme" >
-        <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
-        <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
-        <button @click="sesionIniciadaTecnico()">Iniciar Sesión</button>
+        <label for="recordarme" class="checkbox-label">{{ $t('session.rememberMe') }}</label>
+        <a href="forgotpassword"> {{ $t('session.haveForgotPassword') }} </a><br>
+        <button @click="sesionIniciadaTecnico()"> {{ $t('session.logIn') }} </button>
       </div>
     </div>
   </div>
