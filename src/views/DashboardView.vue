@@ -1,72 +1,161 @@
 <template>
-    <div class="container">
-        <h1>Dashboard</h1>
-        <div class="appointments-view">
-            <div class="appointment-card">
-                <img src="https://picsum.photos/200">
-                <div class="appointment-info">
-                    <h2>Appointment Name</h2>
-                    <p>Appointment Date</p>
-                    <p>Appointment Time</p>
-                    <p>Appointment Location</p>
-                </div>
-                <div class="view-more">
-                    <button type="button">Más información</button>
-                </div>
-            </div>
-        </div>
-        <div class="inventory-view">
-            <div class="inventory-item">
-                <img src="https://picsum.photos/200">
-                <div class="item-caption">
-                    <h4>Item</h4>
-                    <p>Stock available</p>
-                </div>
-                <div class="view-more">
-                    <button type="button">Ver más</button>
-                </div>
-            </div>
-        </div>
-        <div class="tracking-view">
-            
-        </div>
-    </div>
-    
+	<div class="container">
+		<h1>Dashboard</h1>
+		<div class="view-container">
+			<div class="view appointments-view">
+				<h3>Appointments</h3>
+				<div class="appointment-card">
+					<div class="user-profile">
+						<img src="https://picsum.photos/100">
+					</div>
+					<div class="appointment-info">
+						<p>Client Name Name</p>
+						<p>15/05/2023</p>
+						<p>15:00</p>
+						<p>Taller</p>
+					</div>
+					<div class="view-more">
+						<button type="button" class="btn-primary">Más información</button>
+					</div>
+				</div>
+			</div>
+			<div class="view inventory-view">
+				<h3>Inventory</h3>
+				<div class="inventory-cards-container">
+					
+				<div class="inventory-item">
+					<img src="https://picsum.photos/150">
+					<div class="item-caption">
+						<h3 class="inventory-item-name">Screen for Samsung Galaxy Tab S3</h3>
+						<p>Stock: 20</p>
+					</div>
+					<div class="view-more">
+						<button type="button" class="btn-primary">Ver más</button>
+					</div>
+				</div>
+<div class="inventory-item">
+					<img src="https://picsum.photos/150">
+					<div class="item-caption">
+						<h3>Thermical paste</h3>
+						<p>Stock: 15</p>
+					</div>
+					<div class="view-more">
+						<button type="button" class="btn-primary">Ver más</button>
+					</div>
+				</div>
+
+				</div>
+			</div>
+			<div class="view tracking-view">
+				<h3>Tracking</h3>
+				<div class="tracking-card">
+					<div class="tracking-roadmap">
+						-----------------------
+					</div>
+				</div>
+				<div class="tracking-card">
+					<div class="tracking-roadmap">
+						-----------------------
+					</div>
+				</div>
+				<div class="tracking-card">
+					<div class="tracking-roadmap">
+						-----------------------
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <style scoped>
 .container {
-    margin: 50px;
-    font-family: 'Nunito Sans', sans-serif;
-    text-align: left;
-    color: #2c3e50;
-    flex-shrink: 0;
-    fill: #FFF;
-    width: 70%;
-    filter: drop-shadow(0px 69px 42px rgba(200, 200, 200, 0.25));
-    background: var(--True-White, #FFF);
-  }
-  h1 {
-    text-align: left;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 96px;
-    font-style: normal;
-    font-weight: 700;
-    width: 130%;
-    line-height: 93.75%;
-    background: linear-gradient(180deg, #243347 0%, rgba(36, 51, 71, 0.00) 164.44%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+	font-family: 'Nunito Sans', sans-serif;
+	text-align: left;
+	color: #2c3e50;
+	fill: #FFF;
+	padding: 0 15% 0 15%;
+	filter: drop-shadow(0px 69px 42px rgba(200, 200, 200, 0.25));
+	background: var(--True-White, #FFF);
+}
 
-  </style>
+h1 {
+	text-align: left;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 96px;
+	font-style: normal;
+	font-weight: 700;
+	width: 130%;
+	line-height: 93.75%;
+	background: linear-gradient(180deg, #243347 0%, rgba(36, 51, 71, 0.00) 164.44%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.view {
+	border: 1px solid #E5E5E5;
+	padding: 2rem;
+}
+
+.view-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+.appointment-card {
+	width: 100%;
+	min-width: 32rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: 2rem;
+	padding: 1rem;
+	background-color: #F6F6FE;
+	border-radius: 16px;
+}
+
+.btn-primary {
+	color: #ccc;
+	padding: 14px;
+	border: none;
+	border-radius: 8px;
+	background: #243347;
+}
+
+.inventory-view {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+.inventory-item {
+	max-width: 10rem;
+}
+
+.inventory-cards-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
+	column-gap: 2rem;
+}
+.inventory-item-name {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+</style>
 
 <script>
-    export default {
-        name: 'DashboardView',
-        data() {
+export default {
+	name: 'DashboardView',
+	data() {
 
-        }
-    }
+	}
+}
 </script>
