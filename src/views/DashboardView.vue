@@ -22,47 +22,50 @@
 			<div class="view inventory-view">
 				<h3>Inventory</h3>
 				<div class="inventory-cards-container">
-					
-				<div class="inventory-item">
-					<img src="https://picsum.photos/150">
-					<div class="item-caption">
-						<h3 class="inventory-item-name">Screen for Samsung Galaxy Tab S3</h3>
-						<p>Stock: 20</p>
+
+					<div class="inventory-item">
+						<img src="https://picsum.photos/150">
+						<div class="item-caption">
+							<h3 class="inventory-item-name">Screen for Samsung Galaxy Tab S3</h3>
+							<p>Stock: 20</p>
+						</div>
+						<div class="view-more">
+							<button type="button" class="btn-primary">Ver más</button>
+						</div>
 					</div>
-					<div class="view-more">
-						<button type="button" class="btn-primary">Ver más</button>
+					<div class="inventory-item">
+						<img src="https://picsum.photos/150">
+						<div class="item-caption">
+							<h3>Thermical paste</h3>
+							<p>Stock: 15</p>
+						</div>
+						<div class="view-more">
+							<button type="button" class="btn-primary">Ver más</button>
+						</div>
 					</div>
-				</div>
-<div class="inventory-item">
-					<img src="https://picsum.photos/150">
-					<div class="item-caption">
-						<h3>Thermical paste</h3>
-						<p>Stock: 15</p>
-					</div>
-					<div class="view-more">
-						<button type="button" class="btn-primary">Ver más</button>
-					</div>
-				</div>
 
 				</div>
 			</div>
 			<div class="view tracking-view">
 				<h3>Tracking</h3>
-				<div class="tracking-card">
-					<div class="tracking-roadmap">
-						-----------------------
+				<div class="tracking-card-container">
+					<div class="tracking-card">
+						<h4>Pedido #233443</h4>
+						<p>Fecha límite: 26/11/2023</p>
+						<div class="timeline-step">Recibido</div>
+					</div>
+					<div class="tracking-card">
+						<h4>Pedido #275543</h4>
+						<p>Fecha límite: 30/11/2023</p>
+						<div class="timeline-step">En proceso</div>
+					</div>
+					<div class="tracking-card">
+						<h4>Pedido #2354753</h4>
+						<p>Fecha límite: 10/12/2023</p>
+						<div class="timeline-step">Listo</div>
 					</div>
 				</div>
-				<div class="tracking-card">
-					<div class="tracking-roadmap">
-						-----------------------
-					</div>
-				</div>
-				<div class="tracking-card">
-					<div class="tracking-roadmap">
-						-----------------------
-					</div>
-				</div>
+
 			</div>
 		</div>
 	</div>
@@ -103,6 +106,7 @@ h1 {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: stretch;
+	gap: 2rem;
 }
 
 .appointment-card {
@@ -144,10 +148,49 @@ h1 {
 	align-items: stretch;
 	column-gap: 2rem;
 }
+
 .inventory-item-name {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+.timeline-step {
+	width: 100%;
+	height: 100%;
+	background-color: #ccc;
+	text-align: center;
+	font-size: 16px;
+	margin-left: 3%;
+	margin-right: 3%;
+	font-weight: bold;
+	color: #000;
+}
+
+.timeline-step.active {
+	background-color: #000;
+	color: #fff;
+}
+
+.tracking-card-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
+	gap: 2rem;
+}
+
+.tracking-card {
+	width: 100%;
+	min-width: 15rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: stretch;
+	column-gap: 2rem;
+	padding: 1rem;
+	background-color: #F6F6FE;
+	border-radius: 16px;
 }
 </style>
 
