@@ -2,7 +2,8 @@
 	<div class="container">
 		<h1>Dashboard</h1>
 		<div class="view-container">
-			<div class="view appointments-view">
+			<div class="horizontal-display">
+				<div class="view appointments-view">
 				<h3>Appointments</h3>
 				<div class="appointment-cards-container">
 					<div class="appointment-card">
@@ -61,6 +62,9 @@
 
 				</div>
 			</div>
+			</div>
+			<br>
+			<br>
 			<div class="view tracking-view">
 				<h3>Tracking</h3>
 				<div class="tracking-card-container">
@@ -132,15 +136,13 @@ h1 {
 	padding: 2rem;
 }
 
-.view-container {
+.horizontal-display {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: row;
 	justify-content: space-between;
 	align-items: stretch;
-	gap: 2rem;
-	overflow-x: scroll;
+	column-gap: 2rem;
 }
-
 .appointment-card {
 	width: 100%;
 	min-width: 32rem;
@@ -219,7 +221,7 @@ h1 {
 	justify-content: space-between;
 	align-items: stretch;
 	gap: 2rem;
-	overflow-x: auto;
+	overflow-x: scroll;
 	min-width: 0;
 }
 .tracking-card, p {
