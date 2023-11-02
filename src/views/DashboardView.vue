@@ -16,7 +16,7 @@
 							<p>Taller</p>
 						</div>
 						<div class="view-more">
-							<button type="button" class="btn-primary">Más información</button>
+							<button type="button" class="btn-primary" @click="goToTechServiceDetails">Más información</button>
 						</div>
 					</div>
 					<div class="appointment-card">
@@ -30,7 +30,7 @@
 							<p>Taller</p>
 						</div>
 						<div class="view-more">
-							<button type="button" class="btn-primary">Más información</button>
+							<button type="button" class="btn-primary" @click="goToTechServiceDetails">Más información</button>
 						</div>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 							<p>Stock: 20</p>
 						</div>
 						<div class="view-more">
-							<button type="button" class="btn-primary">Ver más</button>
+							<button type="button" class="btn-primary" @click="goToInventory">Ver más</button>
 						</div>
 					</div>
 					<div class="inventory-item">
@@ -55,7 +55,7 @@
 							<p>Stock: 15</p>
 						</div>
 						<div class="view-more">
-							<button type="button" class="btn-primary">Ver más</button>
+							<button type="button" class="btn-primary" @click="goToInventory">Ver más</button>
 						</div>
 					</div>
 
@@ -72,7 +72,7 @@
 					<div class="tracking-card">
 						<h4>Pedido #275543</h4>
 						<p>Fecha límite: 30/11/2023</p>
-						<div class="timeline-step">En proceso</div>
+						<div class="timeline-step" @click.prevent="goToTracking">En proceso</div>
 					</div>
 					<div class="tracking-card">
 						<h4>Pedido #2354753</h4>
@@ -87,7 +87,7 @@
 					<div class="tracking-card">
 						<h4>Pedido #275543</h4>
 						<p>Fecha límite: 30/11/2023</p>
-						<div class="timeline-step">En proceso</div>
+						<div class="timeline-step" @click.prevent="goToTracking">En proceso</div>
 					</div>
 					<div class="tracking-card">
 						<h4>Pedido #2354753</h4>
@@ -124,6 +124,7 @@ h1 {
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	margin-bottom: 4%;
 }
 
 .view {
@@ -165,6 +166,7 @@ h1 {
 	border: none;
 	border-radius: 8px;
 	background: #243347;
+	cursor: pointer;
 }
 
 .inventory-view {
@@ -193,7 +195,8 @@ h1 {
 }
 
 .timeline-step {
-	width: 100%;
+	margin-top: 5%;
+	width: 90%;
 	height: 100%;
 	background-color: #ccc;
 	text-align: center;
@@ -202,6 +205,7 @@ h1 {
 	margin-right: 3%;
 	font-weight: bold;
 	color: #000;
+	cursor: pointer;
 }
 
 .timeline-step.active {
@@ -217,6 +221,11 @@ h1 {
 	gap: 2rem;
 	overflow-x: auto;
 	min-width: 0;
+}
+.tracking-card, p {
+	align-items: center;
+	text-align: left;
+	
 }
 
 .tracking-card {
@@ -238,6 +247,17 @@ export default {
 	name: 'DashboardView',
 	data() {
 
+	},
+	methods: {
+		goToTracking() {
+			this.$router.push('/tracking/:id');
+		},
+		goToInventory() {
+			this.$router.push('/inventory');
+		},
+		goToTechServiceDetails() {
+			this.$router.push('/tech-service-details');
+		}
 	}
 }
 </script>

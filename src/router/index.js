@@ -121,7 +121,7 @@ const router = createRouter({
       name: 'sisopchoose',
       component: () => import('../views/SistemOpChooseView.vue'),
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -221,13 +221,19 @@ const router = createRouter({
       path: '/tracking/:id',
       name: 'tracking',
       component: () => import('../views/TrackingView.vue')
-    }
+    },
+    {
+      path: '/tech-service-details',
+      name:  'techservicedetails',
+      component: () => import('../views/TechServiceDetailsView.vue')
+    },
   ]
 })
 
 router.beforeEach((to, from, next)=>{
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   const isAuthenticated = localStorage.getItem('token');
+
 
   if(requiresAuth && !isAuthenticated){
     next('/login');
