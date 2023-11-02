@@ -38,19 +38,27 @@ const messages = {
             goBack: 'Go back',
             logIn: 'Log in',
             createAccount: 'Create account',
+            names: 'Names',
+            surnames: 'Surnames',
+            email: 'Email',
+            password: 'Password',
+            phoneNumber: 'Phone number',
         },
         session: {
             welcomeToPhoneResQ: 'Welcome to PhoneResQ',
             chooseAnOption: 'Choose an option',
             continueGoogle: 'Continue with Google',
             continueFacebook: 'Continue with Facebook',
-            email: 'Email',
-            password: 'Password',
             rememberMe: 'Remember me',
             haveForgotPassword: 'Have you forgot your password?',
             logIn: 'Log in',
             notRegisteredYet: 'Not registered yet?',
             createAccount: 'Create account',
+        },
+        account: {
+            myAccount: "My account",
+
+            profile: 'Profile',
         }
     }
 }
