@@ -37,7 +37,7 @@ import "primeicons/primeicons.css";
       <p>Cliente</p>
       <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> Continuar con Google </a><br>
       <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> Continuar con Facebook </a><br>
-      <a>Todavía no te has registrado?</a><a @click="registraCliente">Crear Cuenta</a>
+      <a>Todavía no te has registrado?</a> <a @click="registraCliente">Crear Cuenta</a>
       <div class="info-row">
         <label>Correo Electrónico</label>
         <input type="text" v-model="correoCliente">
@@ -80,11 +80,17 @@ import "primeicons/primeicons.css";
 <script>
 export default {
   name: 'LoginView',
+  
   data() {
     return {
       usuarioElige: null,
+      correoCliente: '',
+      contrasenaCliente: '',
+      correoTecnico: '',
+      contrasenaTecnico: '',
       historialVistas: ['inicio'],
     };
+    
   },
   created() {
     this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
@@ -141,6 +147,9 @@ export default {
         return;
       }
       else{
+        // Después de que el usuario inicia sesión con éxito, establece el token en localStorage
+        localStorage.setItem('token', 'el_token_generado');
+
         this.$emit("value-received", true);
         this.$router.push({name: 'sisopchoose'});
       }
@@ -159,8 +168,10 @@ export default {
         return;
       }
       else{
+        // Después de que el usuario inicia sesión con éxito, establece el token en localStorage
+        localStorage.setItem('token', 'el_token_generado');
         this.$emit("value-received", true);
-        this.$router.push({name: 'inicio'});
+        this.$router.push({name: 'dashboard'});
       }
 
       // Resto de la lógica de inicio de sesión de técnico

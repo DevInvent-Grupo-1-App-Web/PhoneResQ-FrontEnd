@@ -19,9 +19,10 @@ export default {
     };
   },
   methods: {
-    updateNavbarVisibility(value) {
-      this.showNavbar = value; // Actualiza la visibilidad del Navbar según el valor recibido
-    },
+  updateNavbarVisibility(value) {
+    this.showNavbar = value; // Actualiza la visibilidad del Navbar según el valor recibido
   },
+}
+
 };
 </script>
