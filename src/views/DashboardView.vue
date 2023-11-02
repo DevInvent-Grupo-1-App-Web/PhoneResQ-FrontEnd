@@ -4,29 +4,44 @@
 		<div class="view-container">
 			<div class="view appointments-view">
 				<h3>Appointments</h3>
-				<div class="appointment-card">
-					<div class="user-profile">
-						<img src="https://picsum.photos/100">
+				<div class="appointment-cards-container">
+					<div class="appointment-card">
+						<div class="user-profile">
+							<img src="https://picsum.photos/100">
+						</div>
+						<div class="appointment-info">
+							<p>Juan Manuel Moya</p>
+							<p>15/11/2023</p>
+							<p>15:00</p>
+							<p>Taller</p>
+						</div>
+						<div class="view-more">
+							<button type="button" class="btn-primary">Más información</button>
+						</div>
 					</div>
-					<div class="appointment-info">
-						<p>Client Name Name</p>
-						<p>15/05/2023</p>
-						<p>15:00</p>
-						<p>Taller</p>
-					</div>
-					<div class="view-more">
-						<button type="button" class="btn-primary">Más información</button>
+					<div class="appointment-card">
+						<div class="user-profile">
+							<img src="https://picsum.photos/100">
+						</div>
+						<div class="appointment-info">
+							<p>Laura Martinez</p>
+							<p>04/11/2023</p>
+							<p>10:00</p>
+							<p>Taller</p>
+						</div>
+						<div class="view-more">
+							<button type="button" class="btn-primary">Más información</button>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="view inventory-view">
 				<h3>Inventory</h3>
 				<div class="inventory-cards-container">
-
 					<div class="inventory-item">
 						<img src="https://picsum.photos/150">
 						<div class="item-caption">
-							<h3 class="inventory-item-name">Screen for Samsung Galaxy Tab S3</h3>
+							<h3 class="inventory-item-name">Pantalla para Samsung Galaxy Tab S3</h3>
 							<p>Stock: 20</p>
 						</div>
 						<div class="view-more">
@@ -36,7 +51,7 @@
 					<div class="inventory-item">
 						<img src="https://picsum.photos/150">
 						<div class="item-caption">
-							<h3>Thermical paste</h3>
+							<h3>Pasta térmica</h3>
 							<p>Stock: 15</p>
 						</div>
 						<div class="view-more">
@@ -64,8 +79,22 @@
 						<p>Fecha límite: 10/12/2023</p>
 						<div class="timeline-step">Listo</div>
 					</div>
+					<div class="tracking-card">
+						<h4>Pedido #233443</h4>
+						<p>Fecha límite: 26/11/2023</p>
+						<div class="timeline-step">Recibido</div>
+					</div>
+					<div class="tracking-card">
+						<h4>Pedido #275543</h4>
+						<p>Fecha límite: 30/11/2023</p>
+						<div class="timeline-step">En proceso</div>
+					</div>
+					<div class="tracking-card">
+						<h4>Pedido #2354753</h4>
+						<p>Fecha límite: 10/12/2023</p>
+						<div class="timeline-step">Listo</div>
+					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -80,6 +109,7 @@
 	padding: 0 15% 0 15%;
 	filter: drop-shadow(0px 69px 42px rgba(200, 200, 200, 0.25));
 	background: var(--True-White, #FFF);
+	width: 100%;
 }
 
 h1 {
@@ -107,6 +137,7 @@ h1 {
 	justify-content: space-between;
 	align-items: stretch;
 	gap: 2rem;
+	overflow-x: scroll;
 }
 
 .appointment-card {
@@ -120,6 +151,12 @@ h1 {
 	padding: 1rem;
 	background-color: #F6F6FE;
 	border-radius: 16px;
+}
+
+.appointment-cards-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 
 .btn-primary {
@@ -178,6 +215,8 @@ h1 {
 	justify-content: space-between;
 	align-items: stretch;
 	gap: 2rem;
+	overflow-x: auto;
+	min-width: 0;
 }
 
 .tracking-card {
