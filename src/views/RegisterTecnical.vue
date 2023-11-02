@@ -1,38 +1,23 @@
 <script setup>
 import "primeicons/primeicons.css";
-
 </script>
 
 <template>
   <div id="appuser">
     <h2>Empecemos a crear tu cuenta</h2>
-    <br>
 
     <div class="form">
       <div class="account-info">
-
         <div class="info-row">
           <label for="">Técnico</label>
         </div>
         <div class="info-row">
           <label>Nombres</label>
-          <input
-              type="text"
-              pattern="[A-Za-z\s]*"
-              inputmode="text"
-              @input="restrictInput"
-              v-model="nombres"
-          >
+          <input type="text" @input="restrictInput(nombres)" v-model="nombres">
         </div>
         <div class="info-row">
           <label>Apellidos</label>
-          <input
-              type="text"
-              pattern="[A-Za-z\s]*"
-              inputmode="text"
-              @input="restrictInput"
-              v-model="apellidos"
-          >
+          <input type="text" @input="restrictInput(apellidos)" v-model="apellidos">
         </div>
         <div class="info-row">
           <label>Fecha de Nacimiento</label>
@@ -40,38 +25,32 @@ import "primeicons/primeicons.css";
         </div>
         <div class="info-row">
           <label>Sexo</label>
-          <input
-              type="text"
-              pattern="^(Masculino|Femenino|masculino|femenino)$"
-              inputmode="text"
-              @input="restrictInput"
-              v-model="sexo"
-          >
+          <input type="text" @input="restrictInput(sexo)" v-model="sexo">
         </div>
         <div class="info-row">
           <label>Teléfono</label>
           <div class="telefono-input">
             <span>+51</span>
-            <input type="tel" v-model="telefono" @input="validarTelefono" maxlength="9">
+            <input type="tel" @input="validarTelefono" v-model="telefono" maxlength="9">
           </div>
         </div>
         <div class="info-row">
           <label>Correo Electrónico</label>
-          <input type="text" >
+          <input type="email" v-model="correo">
         </div>
         <div class="info-row">
           <label>Contraseña</label>
-          <input type="text" >
+          <input type="password" v-model="contrasena">
         </div>
         <div class="info-row">
           <label>Repetir contraseña</label>
-          <input type="text" >
+          <input type="password" v-model="repetirContrasena">
         </div>
         <div>
-          <input type="checkbox" id="recordarme" >
+          <input type="checkbox" id="recordarme">
           <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
         </div>
-        <button @click="registrarme()">Registrarme</button>
+        <button @click="registrarme" type="submit">Registrarme</button>
       </div>
     </div>
   </div>
@@ -93,87 +72,68 @@ export default {
     };
   },
   methods: {
-
-    registrarme() {
-
-      if (!this.validarNombres(this.nombres)) {
-        alert("Nombres no válidos. Solo se permiten letras.");
-        return;
-      }
-      if (!this.validarNombres(this.apellidos)) {
-        alert("Apellidos no válidos. Solo se permiten letras.");
-        return;
-      }
-      if (!this.validarFechaNacimiento(this.fechaNacimiento)) {
-        alert("Fecha de nacimiento no válida.");
-        return;
-      }
-      if (!this.validarSexo(this.sexo)) {
-        alert("Sexo no válido. Debe ser 'Masculino' o 'Femenino'.");
-        return;
-      }
-      if (!this.validarTelefono(this.telefono)) {
-        alert("Teléfono no válido. Debe empezar con +51 seguido de 9 números.");
-        return;
-      }
-      if (!this.validarCorreo(this.correo)) {
-        alert("Correo electrónico no válido.");
-        return;
-      }
-      if (this.contrasena.length < 6) {
-        alert("La contraseña debe tener al menos 6 caracteres.");
-        return;
-      }
-      if (this.contrasena !== this.repetirContrasena) {
-        alert("Las contraseñas no coinciden.");
-        return;
-      }
-
-      else{
-        this.$router.push({ name: 'inicio' });
-      }
-
-    },
-
-
     validarTelefono() {
       // Elimina cualquier carácter que no sea un número
       this.telefono = this.telefono.replace(/\D/g, '');
-      return /^\+51\d{9}$/.test(telefono);
+      return /^\+51\d{9}$/.test(this.telefono);
     },
 
-    restrictInput(event) {
-      // Reemplazar el valor del campo con solo letras y espacios
-      event.target.value = event.target.value.replace(/[^A-Za-z\s]/g, '');
+    restrictInput(text) {
+      // Reemplaza el valor del campo con solo letras y espacios
+      return text.replace(/[^A-Za-z\s]/g, '');
     },
 
-    validarNombres(texto) {
-      // Validar que solo se permitan letras en los nombres
-      return /^[a-zA-Z]+$/.test(texto);
+    registrarme() {
+      if (
+          this.validarCampo(this.nombres, "Nombres") &&
+          this.validarCampo(this.apellidos, "Apellidos") &&
+          this.validarFechaNacimiento(this.fechaNacimiento) &&
+          this.validarCampo(this.sexo, "Sexo", /^(masculino|femenino)$/i) &&
+          this.validarCorreo(this.correo) &&
+          this.validarContrasena(this.contrasena) &&
+          this.contrasena === this.repetirContrasena
+      )
+      {
+        this.$router.push({ name: 'inicio' });
+      }
     },
-    validarFechaNacimiento(fecha) {
-      // Puedes agregar una validación más específica según tus requerimientos
+
+    validarCampo(campo, nombre, patron) {
+      if (!campo) {
+        alert(`El campo ${nombre} es obligatorio.`);
+        return false;
+      }
+      if (patron && !patron.test(campo)) {
+        alert(`El campo ${nombre} no es válido.`);
+        return false;
+      }
       return true;
     },
-    validarSexo(texto) {
-      // Validar que el sexo sea 'Masculino' o 'Femenino'
-      return /^masculino$|^femenino$/i.test(texto);
+
+    validarFechaNacimiento(fecha) {
+      // Agregar validación específica si es necesario
+      return true;
+    },
+
+    validarContrasena(contrasena) {
+      if (!contrasena) {
+        alert("La contraseña es obligatoria.");
+        return false;
+      }
+      if (contrasena.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return false;
+      }
+      return true;
     },
 
     validarCorreo(correo) {
-
-      return /* Tu validación de correo personalizada */;
-    },
-
-    /*registrarme() {
-      this.$router.push({ name: 'inicio' });
-    }*/
-  },
-  computed: {
-    esFormularioValido() {
-      // Agrega aquí la lógica para verificar si todo el formulario es válido
-      // Por ejemplo, puedes verificar si los campos obligatorios están llenos y otros criterios de validación
-      return /* Lógica para verificar si el formulario es válido */;
+      if (!correo) {
+        alert("El correo electrónico es obligatorio.");
+        return false;
+      }
+      // Agregar validación de correo electrónico si es necesario
+      return true;
     },
   },
 };
