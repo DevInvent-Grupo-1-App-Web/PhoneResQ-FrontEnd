@@ -14,6 +14,7 @@ import "primeicons/primeicons.css";
       <button @click="eligeCliente">{{ $t('global.client') }}</button><br>
       <button @click="eligeTecnico">{{ $t('global.technician') }}</button>
       </div>
+
       <div v-else>
     <div class="account-info" v-if="usuarioElige === 'vistacliente'">
       <h3>{{ $t('session.welcomeToPhoneResQ') }}</h3>
@@ -34,14 +35,14 @@ import "primeicons/primeicons.css";
       <button @click="volverAtras">{{ $t('global.goBack') }}</button>
       <h3>{{ $t('global.logIn') }}</h3>
       <p>{{ $t('global.client') }}</p>
-      <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> {{ $t('session.continueGoogle') }} </a><br>
+      <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google">{{ $t('session.continueGoogle') }}</a><br>
       <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> {{ $t('session.continueFacebook') }} </a><br>
-      <a>{{ $t('session.notRegisteredYet') }}</a><a @click="registraCliente">{{ $t('session.createAccount') }}</a>
+      <a>{{ $t('session.notRegisteredYet') }}</a> <a @click="registraCliente">{{ $t('session.createAccount') }}</a>
       <div class="info-row">
         <label>{{ $t('session.email') }}</label>
-        <input type="text">
+        <input type="text" v-model="correoCliente">
         <label>{{ $t('session.password') }}</label>
-        <input type="text">
+        <input type="password" v-model="contrasenaCliente">
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">{{ $t('session.rememberMe') }}</label>
         <a href="forgotpassword"> {{ $t('session.haveForgotPassword') }} </a><br>
@@ -55,12 +56,12 @@ import "primeicons/primeicons.css";
       <p>{{ $t('global.technician') }}</p>
       <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> {{ $t('session.continueGoogle') }} </a><br>
       <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> {{ $t('session.continueFacebook') }} </a><br>
-      <a>{{ $t('session.notRegisteredYet') }}</a><a @click="registraTecnico">{{ $t('session.createAccount') }}</a>
+      <a>{{ $t('session.notRegisteredYet') }}</a><a @click="registraTecnico();">{{ $t('session.createAccount') }}</a>
       <div class="info-row">
         <label>{{ $t('session.email') }}</label>
-        <input type="text">
+        <input type="text" v-model="correoTecnico">
         <label>{{ $t('session.password') }}</label>
-        <input type="text">
+        <input type="password" v-model="contrasenaTecnico">
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">{{ $t('session.rememberMe') }}</label>
         <a href="forgotpassword"> {{ $t('session.haveForgotPassword') }} </a><br>
@@ -69,7 +70,7 @@ import "primeicons/primeicons.css";
     </div>
   </div>
   </div>
-  
+
 
 </div>
 
@@ -79,11 +80,17 @@ import "primeicons/primeicons.css";
 <script>
 export default {
   name: 'LoginView',
+  
   data() {
     return {
       usuarioElige: null,
+      correoCliente: '',
+      contrasenaCliente: '',
+      correoTecnico: '',
+      contrasenaTecnico: '',
       historialVistas: ['inicio'],
     };
+    
   },
   created() {
     this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
@@ -119,14 +126,7 @@ export default {
         this.usuarioElige = 'inicio';
       }
     },
-    sesionIniciadaCliente() {
-      this.$emit("value-received", true);
-      this.$router.push({name: 'sisopchoose'});
-    },
-    sesionIniciadaTecnico() {
-      this.$emit("value-received", true);
-      this.$router.push({name: 'inicio'});
-    },
+
     volverInicio() {
       if (this.historialVistas.length > 1) {
         const vistaAnterior = this.historialVistas.pop();
@@ -134,6 +134,52 @@ export default {
       } else {
         this.usuarioElige = null; // Devuelve a la vista de inicio si el historial está vacío
       }
+    },
+
+
+    sesionIniciadaCliente() {
+      if (!this.validarCorreo(this.correoCliente)) {
+        alert("Correo electrónico no válido.");
+        return;
+      }
+      if (this.contrasenaCliente.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
+      else{
+        // Después de que el usuario inicia sesión con éxito, establece el token en localStorage
+        localStorage.setItem('token', 'el_token_generado');
+
+        this.$emit("value-received", true);
+        this.$router.push({name: 'sisopchoose'});
+      }
+
+      // Resto de la lógica de inicio de sesión de cliente
+    },
+
+    // Para el login de técnico
+    sesionIniciadaTecnico() {
+      if (!this.validarCorreo(this.correoTecnico)) {
+        alert("Correo electrónico no válido.");
+        return;
+      }
+      if (this.contrasenaTecnico.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
+      else{
+        // Después de que el usuario inicia sesión con éxito, establece el token en localStorage
+        localStorage.setItem('token', 'el_token_generado');
+        this.$emit("value-received", true);
+        this.$router.push({name: 'dashboard'});
+      }
+
+      // Resto de la lógica de inicio de sesión de técnico
+    },
+
+    validarCorreo(correo) {
+      // Validar el correo para que termine en @gmail.com o @hotmail.com
+      return correo.endsWith("@gmail.com") || correo.endsWith("@hotmail.com");
     },
   }
 };
