@@ -142,6 +142,11 @@ const router = createRouter({
       component: () => import('../views/RatingTechnician.vue')
     },
     {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue')
+    },
+    {
       path: '/inventory',
       name: 'inventory',
       component: () => import('../views/InventoryView.vue')
@@ -150,8 +155,7 @@ const router = createRouter({
       path: '/tracking/:id',
       name: 'tracking',
       component: () => import('../views/TrackingView.vue')
-    },
-
+    }
   ]
 })
 
