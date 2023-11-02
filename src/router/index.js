@@ -8,22 +8,34 @@ const router = createRouter({
     {
       path: '/inicio',
       name: 'inicio',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/',
       name: 'start',
-      component: LoginView
+      component: LoginView,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/servicios',
       name: 'servicios',
-      component: () => import('../views/ServicesView.vue')
+      component: () => import('../views/ServicesView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/mi-cuenta',
       name: 'mi-cuenta',
-      component: () => import('../views/AccountView.vue')
+      component: () => import('../views/AccountView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
@@ -33,17 +45,26 @@ const router = createRouter({
     {
       path: '/registracliente',
       name: 'registracliente',
-      component: () => import('../views/RegisterClient.vue')
+      component: () => import('../views/RegisterClient.vue'),
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/registertecnical',
       name: 'registertecnical',
-      component: () => import('../views/RegisterTecnical.vue')
+      component: () => import('../views/RegisterTecnical.vue'),
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/mensajes',
       name: 'mensajes',
-      component: () => import('../views/MessagesView.vue')
+      component: () => import('../views/MessagesView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/mensajes/:id',
@@ -53,22 +74,34 @@ const router = createRouter({
     {
       path: '/recuperar-cuenta',
       name: 'recuperar-cuenta',
-      component: () => import('../views/RecoverAccountView.vue')
+      component: () => import('../views/RecoverAccountView.vue'),
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/servicios/:id',
       name: 'servicio',
-      component: () => import('../views/ServicesView.vue')
+      component: () => import('../views/ServicesView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/registrar-reclamo',
       name: 'registrar-reclamo',
-      component: () => import('../views/ClaimFormView.vue')
+      component: () => import('../views/ClaimFormView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/registrar-observacion',
       name: 'registrar-observacion',
-      component: () => import('../views/ObservationFormView.vue')
+      component: () => import('../views/ObservationFormView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/perfil/:username',
@@ -78,58 +111,91 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
-      component: () => import('../views/NotFoundView.vue')
+      component: () => import('../views/NotFoundView.vue'),
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/sisopchoose',
       name: 'sisopchoose',
-      component: () => import('../views/SistemOpChooseView.vue')
+      component: () => import('../views/SistemOpChooseView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/iphonemodels',
       name: 'iphonemodels',
-      component: () => import('../views/iOSoptionsView.vue')
+      component: () => import('../views/iOSoptionsView.vue'),
+      meta: {
+        requiresAuth: true
+      }
 
     },
     {
        path: '/phoneproblems',
         name: 'phoneproblems',
-        component: () => import('../views/PhoneProblemsSelectionView.vue')
+        component: () => import('../views/PhoneProblemsSelectionView.vue'),
+        meta: {
+          requiresAuth: true
+        }
     },
     {
       path: '/androidbrandsoptions',
       name: 'androidbrandsoptions',
-      component: () => import('../views/AndroidBrandsOptionsView.vue')
+      component: () => import('../views/AndroidBrandsOptionsView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/xiaomiphonelist',
       name: 'xiaomiphonelist',
-      component: () => import('../views/XiaomiPhoneListView.vue')
+      component: () => import('../views/XiaomiPhoneListView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/samsungphoneslist',
       name: 'samsungphonelist',
-      component: () => import('../views/SamsungPhoneListView.vue')
+      component: () => import('../views/SamsungPhoneListView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/huaweiphoneslist',
       name: 'huaweiphoneslist',
-      component: () => import('../views/HuaweiPhoneListView.vue')
+      component: () => import('../views/HuaweiPhoneListView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/motorolaphoneslist',
       name: 'motorolaphoneslist',
-      component: () => import('../views/MotorolaPhoneListView.vue')
+      component: () => import('../views/MotorolaPhoneListView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/forgotpassword',
       name: 'forgotpassword',
-      component: () => import('../views/ForgotPasswordView.vue')
+      component: () => import('../views/ForgotPasswordView.vue'),
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/resetpassword',
       name: 'resetpassword',
-      component: () => import('../views/ResetPasswordView.vue')
+      component: () => import('../views/ResetPasswordView.vue'),
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/password-changed-successfully',
@@ -157,6 +223,18 @@ const router = createRouter({
       component: () => import('../views/TrackingView.vue')
     }
   ]
+})
+
+router.beforeEach((to, from, next)=>{
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const isAuthenticated = localStorage.getItem('token');
+
+  if(requiresAuth && !isAuthenticated){
+    next('/login');
+  } 
+  else{
+    next();
+  }
 })
 
 export default router
