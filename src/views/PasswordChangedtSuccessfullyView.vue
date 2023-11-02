@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-12">
-          <img src="successfullypasswordchanged.jpg" alt="Woman holding a clipboard">
+          <img src="@/assets/successfullypasswordchanged.jpg" alt="Woman holding a clipboard">
         </div>
         <div class="col-md-4 col-12">
           <h1>Su contraseña ha sido restablecida</h1>
@@ -22,7 +22,6 @@
     justify-content: space-between;
     align-items: center;
     background: rgba(36, 51, 71, 0.80);
-
   
   }
   

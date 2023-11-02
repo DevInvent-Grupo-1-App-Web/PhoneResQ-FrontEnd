@@ -1,33 +1,27 @@
-<script setup>
-import NavbarMain from './components/NavbarMain.vue';
-</script>
-
 <template>
   <header>
-    <NavbarMain v-if="authorized"/>
+    <NavbarMain v-if="showNavbar" />
   </header>
-  <RouterView v-on:value-received="authorize();"/>
+  <RouterView v-on:value-received="updateNavbarVisibility" />
 </template>
 
-<style>
-</style>
-
 <script>
-  export default {
-    name: 'App',
-    components: {
-      NavbarMain,
-    },
-    data() {
-      return {
-        authorized: false
-      }
-    },
-    methods: {
-      authorize() {
-        this.authorized = true;
-      }
-    }
-  }
+import NavbarMain from './components/NavbarMain.vue';
 
+export default {
+  name: 'App',
+  components: {
+    NavbarMain,
+  },
+  data() {
+    return {
+      showNavbar: true, // Inicialmente muestra el Navbar
+    };
+  },
+  methods: {
+    updateNavbarVisibility(value) {
+      this.showNavbar = value; // Actualiza la visibilidad del Navbar según el valor recibido
+    },
+  },
+};
 </script>

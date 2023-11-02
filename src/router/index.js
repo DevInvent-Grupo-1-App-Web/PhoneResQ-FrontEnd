@@ -40,10 +40,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue'),
-      meta: {
-        requiresAuth: false
-      }
+      component: LoginView
     },
     {
       path: '/registracliente',
@@ -203,20 +200,28 @@ const router = createRouter({
     {
       path: '/password-changed-successfully',
       name: 'password-changed-successfully',
-      component: () => import('../views/PasswordChangedtSuccessfullyView.vue'),
-      meta: {
-        requiresAuth: false
-      }
+      component: () => import('../views/PasswordChangedtSuccessfullyView.vue')
     },
     {
       path: '/reviewtechnician',
       name: 'reviewtechnician',
-      component: () => import('../views/RatingTechnician.vue'),
-      meta: {
-        requiresAuth: true
-      }
+      component: () => import('../views/RatingTechnician.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue')
+    },
+    {
+      path: '/inventory',
+      name: 'inventory',
+      component: () => import('../views/InventoryView.vue')
+    },
+    {
+      path: '/tracking/:id',
+      name: 'tracking',
+      component: () => import('../views/TrackingView.vue')
     }
-
   ]
 })
 

@@ -3,16 +3,19 @@ import "primeicons/primeicons.css";
 </script>
 
 <template>
-  <div v-if="usuarioElige === null">
-    <div class="buttons">
-      <h3>Bienvenido a PhoneResQ</h3>
+  <div class="container">
+    <div class="image-container">
+      <img src="@/assets/successfullypasswordchanged.jpg" alt="Woman holding a clipboard">
+    </div>
+    <div class="content-container">
+      <div v-if="usuarioElige === null" class="buttons">
+        <h3>Bienvenido a PhoneResQ</h3>
       <p>Selecciona tu opción</p>
       <button @click="eligeCliente">Cliente</button><br>
       <button @click="eligeTecnico">Técnico</button>
-    </div>
-  </div>
+      </div>
 
-  <div v-else>
+      <div v-else>
     <div class="account-info" v-if="usuarioElige === 'vistacliente'">
       <h3>Bienvenido a PhoneResQ</h3>
       <p>Cliente</p>
@@ -37,9 +40,9 @@ import "primeicons/primeicons.css";
       <a>Todavía no te has registrado?</a><a @click="registraCliente">Crear Cuenta</a>
       <div class="info-row">
         <label>Correo Electrónico</label>
-        <input type="text">
+        <input type="text" v-model="correoCliente">
         <label>Contraseña</label>
-        <input type="text">
+        <input type="password" v-model="contrasenaCliente">
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
         <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
@@ -56,9 +59,9 @@ import "primeicons/primeicons.css";
       <a>Todavía no te has registrado?</a><a @click="registraTecnico();">Crear Cuenta</a>
       <div class="info-row">
         <label>Correo Electrónico</label>
-        <input type="text">
+        <input type="text" v-model="correoTecnico">
         <label>Contraseña</label>
-        <input type="text">
+        <input type="password" v-model="contrasenaTecnico">
         <input type="checkbox" id="recordarme" >
         <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
         <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
@@ -66,6 +69,12 @@ import "primeicons/primeicons.css";
       </div>
     </div>
   </div>
+  </div>
+
+
+</div>
+
+ 
 </template>
 
 <script>
@@ -76,6 +85,9 @@ export default {
       usuarioElige: null,
       historialVistas: ['inicio'],
     };
+  },
+  created() {
+    this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
   },
   methods: {
     eligeCliente() {
@@ -108,14 +120,7 @@ export default {
         this.usuarioElige = 'inicio';
       }
     },
-    sesionIniciadaCliente() {
-      this.$emit("value-received", true);
-      this.$router.push({name: 'sisopchoose'});
-    },
-    sesionIniciadaTecnico() {
-      this.$emit("value-received", true);
-      this.$router.push({name: 'inicio'});
-    },
+
     volverInicio() {
       if (this.historialVistas.length > 1) {
         const vistaAnterior = this.historialVistas.pop();
@@ -123,6 +128,47 @@ export default {
       } else {
         this.usuarioElige = null; // Devuelve a la vista de inicio si el historial está vacío
       }
+    },
+
+
+    sesionIniciadaCliente() {
+      if (!this.validarCorreo(this.correoCliente)) {
+        alert("Correo electrónico no válido.");
+        return;
+      }
+      if (this.contrasenaCliente.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
+      else{
+        this.$emit("value-received", true);
+        this.$router.push({name: 'sisopchoose'});
+      }
+
+      // Resto de la lógica de inicio de sesión de cliente
+    },
+
+    // Para el login de técnico
+    sesionIniciadaTecnico() {
+      if (!this.validarCorreo(this.correoTecnico)) {
+        alert("Correo electrónico no válido.");
+        return;
+      }
+      if (this.contrasenaTecnico.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
+      else{
+        this.$emit("value-received", true);
+        this.$router.push({name: 'inicio'});
+      }
+
+      // Resto de la lógica de inicio de sesión de técnico
+    },
+
+    validarCorreo(correo) {
+      // Validar el correo para que termine en @gmail.com o @hotmail.com
+      return correo.endsWith("@gmail.com") || correo.endsWith("@hotmail.com");
     },
   }
 };
@@ -138,6 +184,60 @@ export default {
     --color-background: #ffff;
   }
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Esto asegura que el contenedor ocupe toda la altura de la pantalla */
+}
+
+.image-container {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Ajusta las clases existentes según sea necesario */
+.buttons, .account-info {
+  width: 100%;
+  max-width: 400px; /* Cambia esto según tus necesidades de diseño */
+  padding: 20px;
+}
+
+/* Agrega media queries para hacerlo responsive */
+@media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .image-container {
+    flex: 1;
+  }
+
+  .content-container {
+    flex: 1;
+  }
+}
+img {
+    width: 100%;
+    height: auto;
+  }
+.div{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .form{
   display: flex;
   width: 100%;
@@ -151,11 +251,23 @@ export default {
 
 
 }
-
+.p{
+  color: #000;
+  text-align: center;
+  font-family: "Mulish", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  margin: 5%;
+  font-weight: 400;
+  line-height: 131.25%;
+  letter-spacing: -0.32px;
+  position: absolute;
+  left: 47px;
+}
 .account-info{
   width: 100%;
   gap: 50px;
-  text-align: left;
+  text-align: center;
   height: 80%;
   margin: 38.7px;
 
@@ -191,8 +303,9 @@ h2 {
 label {
   font-weight: bold;
   margin-right: 10px;
-  width: 600px;
+  width: 100%;
   flex-shrink: 0;
+  text-align: left;
 
 }
 div.form{
@@ -209,7 +322,7 @@ input, select {
   flex-direction: column;
   align-items: flex-start;
   gap: 50px;
-  width: 50%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -218,12 +331,18 @@ input, select {
   font-family: 'Mulish', sans-serif;
   height: 80%;
   flex-shrink: 0;
+
 }
 
 button {
-  display: inline-flex;
+  margin-bottom: 3%;
+  text-align: center;
   color: #ccc;
-  padding: 16px 80px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
+  width: 50%;
+  height: auto;
+  padding: 16px;
   align-items: center;
   gap: 10px;
   border-radius: 8px;

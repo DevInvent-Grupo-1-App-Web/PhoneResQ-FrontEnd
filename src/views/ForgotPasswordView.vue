@@ -11,7 +11,7 @@
     </div>
     </div>
     <div class="header">
-      <img class="girlwp" src="forgetpasswordimg.jpg" alt="Girl with pencil">
+      <img class="girlwp" src="@/assets/forgetpasswordimg.jpg" alt="Girl with pencil">
     </div>
   </div>
 </template>
