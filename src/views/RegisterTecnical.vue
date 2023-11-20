@@ -130,7 +130,7 @@ export default {
       }
 
       else{
-        this.$router.push({ name: 'inicio' });
+        this.$router.push({ name: 'support-center-register' });
       }
 
     },
@@ -169,13 +169,13 @@ export default {
       this.$router.push({ name: 'inicio' });
     }*/
   },
-  computed: {
-    esFormularioValido() {
+  //computed: {
+    //esFormularioValido() {
       // Agrega aquí la lógica para verificar si todo el formulario es válido
       // Por ejemplo, puedes verificar si los campos obligatorios están llenos y otros criterios de validación
-      return /* Lógica para verificar si el formulario es válido */;
-    },
-  },
+      //return /* Lógica para verificar si el formulario es válido */;
+   // },
+  //},
 };
 </script>
 

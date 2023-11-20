@@ -63,7 +63,7 @@ export default {
             
         },
         goToObservation() {
-            this.$router.push('/observacionesform/:id');
+            this.$router.push('/registrar-observacion');
         }
     }
 };

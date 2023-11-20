@@ -84,6 +84,8 @@ export default {
   data() {
     return {
       usuarioElige: null,
+      isTechnician: false, // Añade esta línea
+      isLoggedIn: false, // Añade esta línea
       correoCliente: '',
       contrasenaCliente: '',
       correoTecnico: '',
@@ -149,7 +151,8 @@ export default {
       else{
         // Después de que el usuario inicia sesión con éxito, establece el token en localStorage
         localStorage.setItem('token', 'el_token_generado');
-
+        this.$root.isTechnician = false; // Añade esta línea
+        this.$root.isLoggedIn = true; // Añade esta línea
         this.$emit("value-received", true);
         this.$router.push({name: 'sisopchoose'});
       }
@@ -168,9 +171,12 @@ export default {
         return;
       }
       else{
-        // Después de que el usuario inicia sesión con éxito, establece el token en localStorage
+        // Después de que el usuario inicia sesión con éxito, establece el token en localStorag
+
         localStorage.setItem('token', 'el_token_generado');
         this.$emit("value-received", true);
+        this.$root.isTechnician = true; // Añade esta línea
+        this.$root.isLoggedIn = true; // Añade esta línea
         this.$router.push({name: 'dashboard'});
       }
 
@@ -196,6 +202,7 @@ export default {
   }
 }
 .container {
+  margin-top: 4%;
   display: flex;
   flex-direction: column;
   align-items: center;
