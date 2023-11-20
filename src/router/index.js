@@ -205,28 +205,51 @@ const router = createRouter({
     {
       path: '/reviewtechnician',
       name: 'reviewtechnician',
-      component: () => import('../views/RatingTechnician.vue')
+      component: () => import('../views/RatingTechnician.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('../views/DashboardView.vue')
+      component: () => import('../views/DashboardView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/inventory',
       name: 'inventory',
-      component: () => import('../views/InventoryView.vue')
+      component: () => import('../views/InventoryView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/tracking/:id',
       name: 'tracking',
-      component: () => import('../views/TrackingView.vue')
+      component: () => import('../views/TrackingView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/tech-service-details',
       name:  'techservicedetails',
-      component: () => import('../views/TechServiceDetailsView.vue')
+      component: () => import('../views/TechServiceDetailsView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
+    {
+      path: '/support-center-register',
+      name: 'support-center-register',
+      component: () => import('../views/RegisterSupportCenterView.vue'),
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 

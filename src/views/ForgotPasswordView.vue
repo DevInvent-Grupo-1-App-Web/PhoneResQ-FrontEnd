@@ -33,7 +33,10 @@ export default {
       // Redirige al usuario a la otra página
       this.$router.push('/resetpassword')
     },
-  }
+  },
+  created() {
+    this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
+  },
 };
 </script>
 
