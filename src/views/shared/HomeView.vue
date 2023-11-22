@@ -1,7 +1,7 @@
 <script setup>
-import SearchBarLarge from "../components/SearchBarLarge.vue";
-import ServiceCard from "../components/ServiceCard.vue";
-import "../assets/theme.css"
+import SearchBarLarge from "./../../components/SearchBarLarge.vue";
+import ServiceCard from "./../../components/ServiceCard.vue";
+import "./../../assets/theme.css"
 </script>
 
 <template>

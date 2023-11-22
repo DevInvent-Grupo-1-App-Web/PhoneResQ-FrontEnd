@@ -37,7 +37,7 @@ export enum NotificationStatus {
 export interface INotification {
     id: number;
     message: string;
-    date: Date;
+    date: string;
     statusUpdate: NotificationStatus;
 }
 
@@ -58,7 +58,7 @@ export enum OrderStatus {
 
 export interface IOrder {
     id: number;
-    createdAt: Date;
+    createdAt: string;
     status: OrderStatus;
     description: string;
     device_id: number;
