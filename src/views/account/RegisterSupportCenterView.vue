@@ -38,6 +38,8 @@
   </template>
   
   <script>
+  import axios from 'axios';
+
   export default {
     name: 'RegisterSupportCenter',
     data() {
@@ -57,10 +59,14 @@
         // Aquí debes enviar los datos del supportCenter al servidor para crear una instancia de SupportCenter
         // Puedes utilizar una solicitud HTTP (por ejemplo, Axios) para enviar los datos al servidor
         // Ejemplo ficticio:
-        axios.post('/api/supportcenters', this.supportCenter)
+        axios.post('http://localhost:5290/api/v1/supportcenter', this.supportCenter)
           .then(response => {
+            console.log(response);
             // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página
-            this.$router.push({ name: 'inicio' });
+            this.$root.isTechnician = true;
+            this.$root.isLoggedIn = true;
+            this.$root.showNavbar = true;
+            this.$router.push({ name: 'dashboard' });
           })
           .catch(error => {
             // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
