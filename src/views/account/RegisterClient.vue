@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import "primeicons/primeicons.css";
-import { ICustomerRequest } from "./../domain/model/Types";
+import { ICustomerRequest } from "./../../domain/model/Types";
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
 import Button from 'primevue/button';
@@ -85,16 +85,17 @@ const registrarme = async () => {
     };
 
     try {
-      const response = await axios.post('http://172.203.177.103:8080/api/v1/Customer', JSON.stringify(customerRequest), {
+      const response = await axios.post('http://localhost:5290/api/v1/customer/register', JSON.stringify(customerRequest), {
         headers: {
           'Content-Type': 'application/json',
         }
       }); 
-      alert('Registro exitoso');
-      console.log(response);
-      // router.push('/inicio');
+      // Expect a token with the register. Save it to localstorage
+      // localStorage.setItem("login-token", "TOKEN")
+      router.push('/inicio');
     } catch (error) {
-      alert('Error al registrar');
+      alert('Error al registrar. Verifica los datos.');
+      console.log(error);
       return;
     }
   }

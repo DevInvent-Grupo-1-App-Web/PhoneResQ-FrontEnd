@@ -1,83 +1,46 @@
-<script setup>
-import "primeicons/primeicons.css";
-
-</script>
-
 <template>
-  <div id="appuser">
-    <h2>Empecemos a crear tu cuenta</h2>
+  <div id="technician">
+    <h2>Let's start creating your account</h2>
     <br>
-
     <div class="form">
       <div class="account-info">
-
-        <div class="info-row">
-          <label for="">Técnico</label>
-        </div>
-        <div class="info-row">
-          <label>Nombres</label>
-          <input
-              type="text"
-              pattern="[A-Za-z\s]*"
-              inputmode="text"
-              @input="restrictInput"
-              v-model="nombres"
-          >
-        </div>
-        <div class="info-row">
-          <label>Apellidos</label>
-          <input
-              type="text"
-              pattern="[A-Za-z\s]*"
-              inputmode="text"
-              @input="restrictInput"
-              v-model="apellidos"
-          >
-        </div>
-        <div class="info-row">
-          <label>Fecha de Nacimiento</label>
-          <input type="date" style="width: 350px">
-        </div>
-        <div class="info-row">
-          <label>Sexo</label>
-          <input
-              type="text"
-              pattern="^(Masculino|Femenino|masculino|femenino)$"
-              inputmode="text"
-              @input="restrictInput"
-              v-model="sexo"
-          >
-        </div>
-        <div class="info-row">
-          <label>Teléfono</label>
-          <div class="telefono-input">
-            <span>+51</span>
-            <input type="tel" v-model="telefono" @input="validarTelefono" maxlength="9">
-          </div>
-        </div>
-        <div class="info-row">
-          <label>Correo Electrónico</label>
-          <input type="text" >
-        </div>
-        <div class="info-row">
-          <label>Contraseña</label>
-          <input type="text" >
-        </div>
-        <div class="info-row">
-          <label>Repetir contraseña</label>
-          <input type="text" >
-        </div>
-        <div>
-          <input type="checkbox" id="recordarme" >
-          <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
-        </div>
-        <button @click="registrarme()">Registrarme</button>
+        <span class="p-float-label info-row">
+          <InputText v-model="names" @input="validateNames" />
+          <label for="names">Names</label>
+          <small v-if="errors.names">Invalid name</small>
+        </span>
+        <span class="p-float-label info-row">
+          <InputText v-model="dni" />
+          <label for="dni">DNI</label>
+          <small v-if="errors.dni">Invalid DNI</small>
+        </span>
+        <span class="p-float-label info-row">
+          <InputText v-model="phone" />
+          <label for="phone">Phone</label>
+          <small v-if="errors.phone">Invalid phone</small>
+        </span>
+        <span class="p-float-label info-row">
+          <InputText v-model="email" />
+          <label for="email">Email</label>
+          <small v-if="errors.email">Invalid email</small>
+        </span>
+        <span class="p-float-label info-row">
+          <Password v-model="password" />
+          <label for="password">Password</label>
+        </span>
+        <span class="p-float-label info-row">
+          <Password v-model="repeatPassword" />
+          <label for="repeatPassword">Repeat password</label>
+        </span>
+        <Button @click="register()">Register</Button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import "primeicons/primeicons.css";
+
 export default {
   name: 'RegisterTecnical',
   data() {
@@ -134,8 +97,6 @@ export default {
       }
 
     },
-
-
     validarTelefono() {
       // Elimina cualquier carácter que no sea un número
       this.telefono = this.telefono.replace(/\D/g, '');
@@ -164,18 +125,7 @@ export default {
 
       return /* Tu validación de correo personalizada */;
     },
-
-    /*registrarme() {
-      this.$router.push({ name: 'inicio' });
-    }*/
   },
-  //computed: {
-    //esFormularioValido() {
-      // Agrega aquí la lógica para verificar si todo el formulario es válido
-      // Por ejemplo, puedes verificar si los campos obligatorios están llenos y otros criterios de validación
-      //return /* Lógica para verificar si el formulario es válido */;
-   // },
-  //},
 };
 </script>
 

@@ -10,77 +10,77 @@ import "primeicons/primeicons.css";
     <div class="content-container">
       <div v-if="usuarioElige === null" class="buttons">
         <h3>Bienvenido a PhoneResQ</h3>
-      <p>Selecciona tu opción</p>
-      <button @click="eligeCliente">Cliente</button><br>
-      <button @click="eligeTecnico">Técnico</button>
+        <p>Selecciona tu opción</p>
+        <button @click="eligeCliente">Cliente</button><br>
+        <button @click="eligeTecnico">Técnico</button>
       </div>
 
       <div v-else>
-    <div class="account-info" v-if="usuarioElige === 'vistacliente'">
-      <h3>Bienvenido a PhoneResQ</h3>
-      <p>Cliente</p>
-      <button @click="volverInicio">Volver atrás</button><br>
-      <button @click="iniciaSesionCliente">Iniciar Sesión</button><br>
-      <button @click="registraCliente">Crear Cuenta</button>
-    </div>
-    <div class="account-info" v-if="usuarioElige === 'vistatecnico'">
-      <h3>Bienvenido a PhoneResQ</h3>
-      <p>Técnico</p>
-      <button @click="volverInicio">Volver atrás</button><br>
-      <button @click="iniciaSesionTecnico">Iniciar Sesión</button><br>
-      <button @click="registraTecnico">Crear Cuenta</button>
-    </div>
+        <div class="account-info" v-if="usuarioElige === 'vistacliente'">
+          <h3>Bienvenido a PhoneResQ</h3>
+          <p>Cliente</p>
+          <button @click="volverInicio">Volver atrás</button><br>
+          <button @click="iniciaSesionCliente">Iniciar Sesión</button><br>
+          <button @click="registraCliente">Crear Cuenta</button>
+        </div>
+        <div class="account-info" v-if="usuarioElige === 'vistatecnico'">
+          <h3>Bienvenido a PhoneResQ</h3>
+          <p>Técnico</p>
+          <button @click="volverInicio">Volver atrás</button><br>
+          <button @click="iniciaSesionTecnico">Iniciar Sesión</button><br>
+          <button @click="registraTecnico">Crear Cuenta</button>
+        </div>
 
-    <div class="account-info" v-if="usuarioElige === 'iniciaSesionCliente'">
-      <button @click="volverAtras">Volver atrás</button>
-      <h3>Ingrese a su cuenta</h3>
-      <p>Cliente</p>
-      <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> Continuar con Google </a><br>
-      <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> Continuar con Facebook </a><br>
-      <a>Todavía no te has registrado?</a> <a @click="registraCliente">Crear Cuenta</a>
-      <div class="info-row">
-        <label>Correo Electrónico</label>
-        <input type="text" v-model="correoCliente">
-        <label>Contraseña</label>
-        <input type="password" v-model="contrasenaCliente">
-        <input type="checkbox" id="recordarme" >
-        <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
-        <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
-        <button @click="sesionIniciadaCliente">Iniciar Sesión</button>
+        <div class="account-info" v-if="usuarioElige === 'iniciaSesionCliente'">
+          <button @click="volverAtras">Volver atrás</button>
+          <h3>Ingrese a su cuenta</h3>
+          <p>Cliente</p>
+          <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> Continuar con Google </a><br>
+          <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> Continuar con Facebook </a><br>
+          <a>Todavía no te has registrado?</a> <a @click="registraCliente">Crear Cuenta</a>
+          <div class="info-row">
+            <label>Correo Electrónico</label>
+            <input type="text" v-model="correoCliente">
+            <label>Contraseña</label>
+            <input type="password" v-model="contrasenaCliente">
+            <input type="checkbox" id="recordarme">
+            <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
+            <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
+            <button @click="sesionIniciadaCliente">Iniciar Sesión</button>
+          </div>
+        </div>
+
+        <div class="account-info" v-if="usuarioElige === 'iniciaSesionTecnico'">
+          <button @click="volverAtras">Volver atrás</button>
+          <h3>Ingrese a su cuenta</h3>
+          <p>Técnico</p>
+          <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> Continuar con Google </a><br>
+          <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> Continuar con Facebook </a><br>
+          <a>Todavía no te has registrado?</a><a @click="registraTecnico();">Crear Cuenta</a>
+          <div class="info-row">
+            <label>DNI</label>
+            <input type="text" v-model="dniTecnico">
+            <label>Contraseña</label>
+            <input type="password" v-model="contrasenaTecnico">
+            <input type="checkbox" id="recordarme">
+            <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
+            <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
+            <button @click="sesionIniciadaTecnico()">Iniciar Sesión</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="account-info" v-if="usuarioElige === 'iniciaSesionTecnico'">
-      <button @click="volverAtras">Volver atrás</button>
-      <h3>Ingrese a su cuenta</h3>
-      <p>Técnico</p>
-      <a href="#"><img src="@/assets/Google.png" style="width: 10px" alt="Google"> Continuar con Google </a><br>
-      <a href="#"><img src="@/assets/Facebook.png" style="width: 10px" alt="Facebook"> Continuar con Facebook </a><br>
-      <a>Todavía no te has registrado?</a><a @click="registraTecnico();">Crear Cuenta</a>
-      <div class="info-row">
-        <label>Correo Electrónico</label>
-        <input type="text" v-model="correoTecnico">
-        <label>Contraseña</label>
-        <input type="password" v-model="contrasenaTecnico">
-        <input type="checkbox" id="recordarme" >
-        <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
-        <a href="forgotpassword"> ¿Has olvidado tu contraseña? </a><br>
-        <button @click="sesionIniciadaTecnico()">Iniciar Sesión</button>
-      </div>
-    </div>
+
   </div>
-  </div>
-
-
-</div>
-
- 
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'LoginView',
-  
+
   data() {
     return {
       usuarioElige: null,
@@ -88,11 +88,11 @@ export default {
       isLoggedIn: false, // Añade esta línea
       correoCliente: '',
       contrasenaCliente: '',
-      correoTecnico: '',
+      dniTecnico: '',
       contrasenaTecnico: '',
       historialVistas: ['inicio'],
     };
-    
+
   },
   created() {
     this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
@@ -111,14 +111,14 @@ export default {
       this.historialVistas.push('iniciaSesionCliente');
     },
     registraCliente() {
-      this.$router.push({name: 'registracliente'});
+      this.$router.push({ name: 'registracliente' });
     },
     iniciaSesionTecnico() {
       this.usuarioElige = 'iniciaSesionTecnico';
       this.historialVistas.push('iniciaSesionTecnico');
     },
     registraTecnico() {
-      this.$router.push({name: 'registertecnical'});
+      this.$router.push({ name: 'registertecnical' });
     },
     volverAtras() {
       if (this.historialVistas.length > 1) {
@@ -128,7 +128,6 @@ export default {
         this.usuarioElige = 'inicio';
       }
     },
-
     volverInicio() {
       if (this.historialVistas.length > 1) {
         const vistaAnterior = this.historialVistas.pop();
@@ -137,58 +136,63 @@ export default {
         this.usuarioElige = null; // Devuelve a la vista de inicio si el historial está vacío
       }
     },
+    async sesionIniciadaCliente() {
+      const customerRequest = {
+        email: this.correoCliente,
+        password: this.contrasenaCliente
+      };
+      try {
+        const response = await axios.post('http://localhost:5290/api/v1/customer/login', customerRequest, {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
 
-
-    sesionIniciadaCliente() {
-      if (!this.validarCorreo(this.correoCliente)) {
-        alert("Correo electrónico no válido.");
-        return;
+        if (response.data === true) {
+          localStorage.setItem('token', 'loggedInAsCustomer');
+          this.$root.isTechnician = false; // Añade esta línea
+          this.$root.isLoggedIn = true; // Añade esta línea
+          this.$emit("value-received", true);
+          this.$router.push({ name: 'sisopchoose' });
+        } else {
+          // Handle login failure
+          console.error('Login failed');
+        }
+      } catch (error) {
+        // Handle request failure
+        console.error(error);
       }
-      if (this.contrasenaCliente.length < 6) {
-        alert("La contraseña debe tener al menos 6 caracteres.");
-        return;
-      }
-      else{
-        // Después de que el usuario inicia sesión con éxito, establece el token en localStorage
-        localStorage.setItem('token', 'el_token_generado');
-        this.$root.isTechnician = false; // Añade esta línea
-        this.$root.isLoggedIn = true; // Añade esta línea
-        this.$emit("value-received", true);
-        this.$router.push({name: 'sisopchoose'});
-      }
-
-      // Resto de la lógica de inicio de sesión de cliente
     },
+    async sesionIniciadaTecnico() {
+      const technicianRequest = {
+        dni: this.dniTecnico,
+        password: this.contrasenaTecnico
+      };
+      try {
+        const response = await axios.post('http://localhost:5290/api/v1/customer/login', customerRequest, {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
 
-    // Para el login de técnico
-    sesionIniciadaTecnico() {
-      if (!this.validarCorreo(this.correoTecnico)) {
-        alert("Correo electrónico no válido.");
-        return;
+        if (response.data === true) {
+          localStorage.setItem('token', 'loggedInAsTechnician');
+          this.$emit("value-received", true);
+          this.$root.isTechnician = true; // Añade esta línea
+          this.$root.isLoggedIn = true; // Añade esta línea
+          this.$router.push({ name: 'dashboard' });
+        } else {
+          // Handle login failure
+          console.error('Login failed');
+        }
+      } catch (error) {
+        // Handle request failure
+        console.error(error);
       }
-      if (this.contrasenaTecnico.length < 6) {
-        alert("La contraseña debe tener al menos 6 caracteres.");
-        return;
-      }
-      else{
-        // Después de que el usuario inicia sesión con éxito, establece el token en localStorag
-
-        localStorage.setItem('token', 'el_token_generado');
-        this.$emit("value-received", true);
-        this.$root.isTechnician = true; // Añade esta línea
-        this.$root.isLoggedIn = true; // Añade esta línea
-        this.$router.push({name: 'dashboard'});
-      }
-
-      // Resto de la lógica de inicio de sesión de técnico
-    },
-
-    validarCorreo(correo) {
-      // Validar el correo para que termine en @gmail.com o @hotmail.com
-      return correo.endsWith("@gmail.com") || correo.endsWith("@hotmail.com");
-    },
+    }
   }
-};
+
+}
 </script>
 
 
@@ -201,13 +205,15 @@ export default {
     --color-background: #ffff;
   }
 }
+
 .container {
   margin-top: 4%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Esto asegura que el contenedor ocupe toda la altura de la pantalla */
+  height: 100vh;
+  /* Esto asegura que el contenedor ocupe toda la altura de la pantalla */
 }
 
 .image-container {
@@ -223,9 +229,11 @@ export default {
 }
 
 /* Ajusta las clases existentes según sea necesario */
-.buttons, .account-info {
+.buttons,
+.account-info {
   width: 100%;
-  max-width: 400px; /* Cambia esto según tus necesidades de diseño */
+  max-width: 400px;
+  /* Cambia esto según tus necesidades de diseño */
   padding: 20px;
 }
 
@@ -245,18 +253,21 @@ export default {
     flex: 1;
   }
 }
+
 img {
-    width: 100%;
-    height: auto;
-  }
-.div{
+  width: 100%;
+  height: auto;
+}
+
+.div {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.form{
+
+.form {
   display: flex;
   width: 100%;
   height: 100%;
@@ -269,7 +280,8 @@ img {
 
 
 }
-.p{
+
+.p {
   color: #000;
   text-align: center;
   font-family: "Mulish", sans-serif;
@@ -282,7 +294,8 @@ img {
   position: absolute;
   left: 47px;
 }
-.account-info{
+
+.account-info {
   width: 100%;
   gap: 50px;
   text-align: center;
@@ -326,7 +339,8 @@ label {
   text-align: left;
 
 }
-div.form{
+
+div.form {
 
   width: 100%;
   height: 100%;
@@ -335,7 +349,9 @@ div.form{
   margin: 38.7px;
   filter: drop-shadow(0px 69px 42px rgba(200, 200, 200, 0.25));
 }
-input, select {
+
+input,
+select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
