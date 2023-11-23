@@ -32,7 +32,7 @@ const router = createRouter({
     {
       path: '/mi-cuenta',
       name: 'mi-cuenta',
-      component: () => import('../views/account/AccountView.vue'),
+      component: () => import('./../views/account/AccountView.vue'),
       meta: {
         requiresAuth: true
       }

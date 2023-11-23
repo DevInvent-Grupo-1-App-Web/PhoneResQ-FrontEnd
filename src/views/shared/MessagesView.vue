@@ -1,5 +1,5 @@
 <script setup>
-  import MessageCard from "../components/MessageCard.component.vue";
+  import MessageCard from "./../../components/MessageCard.component.vue"
 </script>
 
 <template>
