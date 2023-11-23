@@ -153,8 +153,18 @@ export default {
         this.$root.isTechnician = false; // Añade esta línea
         this.$root.isLoggedIn = true; // Añade esta línea
         this.$emit("value-received", true);
-        this.$router.push({name: 'sisopchoose'});
         console.log('Usuario autenticado con Google:', result.user);
+        this.$root.userData = {
+        nombres: result.user.displayName,
+        apellidos: '',
+        correo: result.user.email,
+        telefono: '',
+        fotoPerfil: result.user.photoURL,
+        perfil: 'cliente', // Puedes ajustar esto según la lógica de tu aplicación
+        };
+        this.$router.push({name: 'sisopchoose'}); 
+        
+
       } catch (error) {
         console.error('Error al iniciar sesión con Google:', error);
       }
@@ -170,11 +180,20 @@ export default {
         const result = await signInWithPopup(auth, provider);
         // El usuario ha iniciado sesión correctamente, puedes redirigirlo a la página deseada
         localStorage.setItem('token', 'el_token_generado');
+        
         this.$root.isTechnician = false; // Añade esta línea
         this.$root.isLoggedIn = true; // Añade esta línea
         this.$emit("value-received", true);
-        this.$router.push({name: 'sisopchoose'});
         console.log('Usuario autenticado con Facebook:', result.user);
+        this.$root.userData = {
+        nombres: result.user.displayName,
+        apellidos: '',
+        correo: result.user.email,
+        telefono: '',
+        fotoPerfil: result.user.photoURL,
+        perfil: 'cliente', // Puedes ajustar esto según la lógica de tu aplicación
+        };
+        this.$router.push({name: 'sisopchoose'});
       } catch (error) {
         console.error('Error al iniciar sesión con Facebook:', error);
       }
@@ -189,11 +208,20 @@ export default {
         const result = await signInWithPopup(auth, provider);
         // El usuario ha iniciado sesión correctamente, puedes redirigirlo a la página deseada
         localStorage.setItem('token', 'el_token_generado');
+        
         this.$root.isTechnician = false; // Añade esta línea
         this.$root.isLoggedIn = true; // Añade esta línea
         this.$emit("value-received", true);
+        console.log('Usuario autenticado con Facebook:', result.user);
+        this.$root.userData = {
+        nombres: result.user.displayName,
+        apellidos: '',
+        correo: result.user.email,
+        telefono: '',
+        fotoPerfil: result.user.photoURL,
+        perfil: 'cliente', // Puedes ajustar esto según la lógica de tu aplicación
+        };
         this.$router.push({name: 'sisopchoose'});
-        console.log('Usuario autenticado con GitHub:', result.user);
       } catch (error) {
         console.error('Error al iniciar sesión con GitHub:', error);
       }
@@ -211,8 +239,17 @@ export default {
         this.$emit("value-received", true);
         this.$root.isTechnician = true; // Añade esta línea
         this.$root.isLoggedIn = true; // Añade esta línea
-        this.$router.push({name: 'dashboard'});
+        this.$root.userData = {
+        nombres: result.user.displayName,
+        apellidos: '',
+        correo: result.user.email,
+        fotoPerfil: result.user.photoURL,
+        telefono: '',
+        perfil: 'técnico', // Puedes ajustar esto según la lógica de tu aplicación
+        };
+
         console.log('Usuario autenticado con Google:', result.user);
+        this.$router.push({name: 'dashboard'});
       } catch (error) {
         console.error('Error al iniciar sesión con Google:', error);
       }
@@ -232,6 +269,16 @@ export default {
         this.$emit("value-received", true);
         this.$root.isTechnician = true; // Añade esta línea
         this.$root.isLoggedIn = true; // Añade esta línea
+        this.$root.userData = {
+        nombres: result.user.displayName,
+        apellidos: '',
+        correo: result.user.email,
+        telefono: '',
+        fotoPerfil: result.user.photoURL,
+        perfil: 'técnico', // Puedes ajustar esto según la lógica de tu aplicación
+        };
+
+        console.log('Usuario autenticado con Google:', result.user);
         this.$router.push({name: 'dashboard'});
       } catch (error) {
         console.error('Error al iniciar sesión con Facebook:', error);
@@ -251,6 +298,16 @@ export default {
         this.$emit("value-received", true);
         this.$root.isTechnician = true; // Añade esta línea
         this.$root.isLoggedIn = true; // Añade esta línea
+        this.$root.userData = {
+        nombres: result.user.displayName,
+        apellidos: '',
+        correo: result.user.email,
+        telefono: '',
+        perfil: 'técnico',
+        fotoPerfil: result.user.photoURL, // Puedes ajustar esto según la lógica de tu aplicación
+        };
+
+        console.log('Usuario autenticado con Google:', result.user);
         this.$router.push({name: 'dashboard'});
         console.log('Usuario autenticado con GitHub:', result.user);
       } catch (error) {

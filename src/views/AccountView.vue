@@ -11,7 +11,9 @@ import "primeicons/primeicons.css";
         <div class="account-info">
       
             <div class="info-row">
-                <label>Nombres</label>
+              <label>Foto de Perfil</label>
+              <img :src="fotoPerfil" alt="Foto de perfil" style="width: 100px; height: 100px; border-radius: 50%;">  
+              <label>Nombres</label>
                  <input type="text" v-model="nombres">
                  </div>
             <div class="info-row">
@@ -28,11 +30,7 @@ import "primeicons/primeicons.css";
             </div>
                 <div class="info-row">
                     <label>Perfil</label>
-                    <select v-model="perfil">
-                    <option value="técnico">Técnico</option>
-                    <option value="comercial">Comercial</option>
-                    <option value="administrativo">Administrativo</option>
-                    </select>
+                    <input type="perf" v-model="perfil">
       </div>
       <button @click="cerrarSesion()">Cerrar sesión</button>
     </div>
@@ -45,16 +43,21 @@ import "primeicons/primeicons.css";
     name: 'AccountView',
     data() {
       return {
-        nombres: "Juan",
-        apellidos: "reyes",
-        correo: "test@test.com",
-        telefono: "93066666",
-        perfil: "técnico"
+        nombres: this.$root.userData.nombres,
+        apellidos: this.$root.userData.apellidos,
+        correo: this.$root.userData.correo,
+        telefono: this.$root.userData.telefono,
+        perfil: this.$root.userData.perfil,
+        fotoPerfil: this.$root.userData.fotoPerfil,
       };
+    },
+    props: {
+      userData: Object,
     },
     methods: {
       cerrarSesion() {
-        this.$emit("value-received", false);
+        this.$emit('value-received', false);
+        this.$root.userData = null;
         this.$router.push({ name: 'login' });
       }
     }
