@@ -337,16 +337,19 @@ export default {
 
         var clientData = await axios.get(`http://localhost:5290/api/v1/customer/email/${this.correoCliente}`);
         
+        console.log(clientData);
+
         this.$root.userData = {
           nombres: clientData.data.resource.name,
           apellidos: '',
           correo: clientData.data.resource.email,
           telefono: clientData.data.resource.phone,
-          perfil: 'Cliente'
+          perfil: 'Cliente',
+          fotoPerfil: 'https://randomuser.me/api/portraits/men/24.jpg'
         };
 
 
-        this.$router.push({ name: 'sisopchoose' });
+        this.$router.push({ name: 'inicio' });
       } else {
         alert("Correo electrónico o contraseña incorrectos.");
         console.log(response);

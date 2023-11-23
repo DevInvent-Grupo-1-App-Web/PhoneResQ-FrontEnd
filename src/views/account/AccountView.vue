@@ -20,11 +20,11 @@ import "primeicons/primeicons.css";
           <label>Apellidos</label>
           <input type="text" v-model="apellidos">
         </div>
-        <div class="info-row" v-if=!this.$root.userData.isTechnician>
+        <div class="info-row">
           <label>Correo electrónico</label>
           <input type="email" v-model="correo">
         </div>
-        <div v-if=this.$root.userData.isTechnician>
+        <div class="info-row">
           <label>DNI</label>
           <input type="email" v-model="dni" disabled>
         </div>
@@ -63,6 +63,7 @@ export default {
     cerrarSesion() {
       this.$emit('value-received', false);
       this.$root.userData = null;
+      localStorage.clear();
       this.$router.push({ name: 'login' });
     },
   },

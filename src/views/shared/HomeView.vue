@@ -14,18 +14,14 @@ import "./../../assets/theme.css"
       </p>
     </div>
     <div class="searchbar-wrapper">
-    <SearchBarLarge> </SearchBarLarge>
+      <SearchBarLarge> </SearchBarLarge>
     </div>
     <div style="width: 70%" class="v-sp-1">
       <h2 style="text-align: center;">Búsqueda reciente</h2>
-      <ServiceCard> </ServiceCard>
-      <ServiceCard> </ServiceCard>
-      <ServiceCard> </ServiceCard>
-      <ServiceCard> </ServiceCard>
-      <ServiceCard> </ServiceCard>
-      <ServiceCard> </ServiceCard>
-      <ServiceCard> </ServiceCard>
-      <ServiceCard> </ServiceCard>
+      <div>
+        <ServiceCard v-for="supportCenter in supportCenterList" :key="supportCenter.id" :supportCenter="supportCenter">
+        </ServiceCard>
+      </div>
     </div>
   </main>
 </template>
@@ -47,10 +43,12 @@ h1 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 p {
   font-size: 1.25rem;
   margin: 0px;
 }
+
 .searchbar-wrapper {
   width: 70%;
   margin-top: 2rem;
@@ -59,7 +57,22 @@ p {
 </style>
 
 <script>
-  export default {
-      name: 'HomeView'
+import axios from 'axios'
+export default {
+  name: 'HomeView',
+  data() {
+    return {
+      supportCenterList: []
+    }
+  },
+  methods: {
+    async getSupportCenter() {
+      const response = await axios.get('http://localhost:5290/api/v1/supportcenter');
+      this.supportCenterList = response.data;
+    }
+  },
+  mounted() {
+    this.getSupportCenter();
   }
+}
 </script>
