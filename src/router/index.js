@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import LoginView from '../views/LoginView.vue';
+import HomeView from '../views/shared/HomeView.vue';
+import LoginView from '../views/account/LoginView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,7 +24,7 @@ const router = createRouter({
     {
       path: '/servicios',
       name: 'servicios',
-      component: () => import('../views/ServicesView.vue'),
+      component: () => import('../views/user/ServicesView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -32,7 +32,7 @@ const router = createRouter({
     {
       path: '/mi-cuenta',
       name: 'mi-cuenta',
-      component: () => import('../views/AccountView.vue'),
+      component: () => import('./../views/account/AccountView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -45,7 +45,7 @@ const router = createRouter({
     {
       path: '/registracliente',
       name: 'registracliente',
-      component: () => import('../views/RegisterClient.vue'),
+      component: () => import('../views/account/RegisterClient.vue'),
       meta: {
         requiresAuth: false
       }
@@ -53,7 +53,7 @@ const router = createRouter({
     {
       path: '/registertecnical',
       name: 'registertecnical',
-      component: () => import('../views/RegisterTecnical.vue'),
+      component: () => import('../views/account/RegisterTecnical.vue'),
       meta: {
         requiresAuth: false
       }
@@ -61,7 +61,7 @@ const router = createRouter({
     {
       path: '/mensajes',
       name: 'mensajes',
-      component: () => import('../views/MessagesView.vue'),
+      component: () => import('../views/shared/MessagesView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -74,7 +74,7 @@ const router = createRouter({
     {
       path: '/recuperar-cuenta',
       name: 'recuperar-cuenta',
-      component: () => import('../views/RecoverAccountView.vue'),
+      component: () => import('../views/account/RecoverAccountView.vue'),
       meta: {
         requiresAuth: false
       }
@@ -82,7 +82,7 @@ const router = createRouter({
     {
       path: '/servicios/:id',
       name: 'servicio',
-      component: () => import('../views/ServicesView.vue'),
+      component: () => import('../views/user/ServicesView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -90,7 +90,7 @@ const router = createRouter({
     {
       path: '/registrar-reclamo',
       name: 'registrar-reclamo',
-      component: () => import('../views/ClaimFormView.vue'),
+      component: () => import('../views/user/ClaimFormView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -98,7 +98,7 @@ const router = createRouter({
     {
       path: '/registrar-observacion',
       name: 'registrar-observacion',
-      component: () => import('../views/ObservationFormView.vue'),
+      component: () => import('../views/user/ObservationFormView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -111,7 +111,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
-      component: () => import('../views/NotFoundView.vue'),
+      component: () => import('../views/shared/NotFoundView.vue'),
       meta: {
         requiresAuth: false
       }
@@ -119,7 +119,7 @@ const router = createRouter({
     {
       path: '/sisopchoose',
       name: 'sisopchoose',
-      component: () => import('../views/SistemOpChooseView.vue'),
+      component: () => import('../views/user/SistemOpChooseView.vue'),
       meta: {
         requiresAuth: false
       }
@@ -127,7 +127,7 @@ const router = createRouter({
     {
       path: '/iphonemodels',
       name: 'iphonemodels',
-      component: () => import('../views/iOSoptionsView.vue'),
+      component: () => import('../views/user/iOSoptionsView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -136,7 +136,7 @@ const router = createRouter({
     {
        path: '/phoneproblems',
         name: 'phoneproblems',
-        component: () => import('../views/PhoneProblemsSelectionView.vue'),
+        component: () => import('../views/user/PhoneProblemsSelectionView.vue'),
         meta: {
           requiresAuth: true
         }
@@ -144,7 +144,7 @@ const router = createRouter({
     {
       path: '/androidbrandsoptions',
       name: 'androidbrandsoptions',
-      component: () => import('../views/AndroidBrandsOptionsView.vue'),
+      component: () => import('../views/user/AndroidBrandsOptionsView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -152,7 +152,7 @@ const router = createRouter({
     {
       path: '/xiaomiphonelist',
       name: 'xiaomiphonelist',
-      component: () => import('../views/XiaomiPhoneListView.vue'),
+      component: () => import('../views/user/XiaomiPhoneListView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -160,7 +160,7 @@ const router = createRouter({
     {
       path: '/samsungphoneslist',
       name: 'samsungphonelist',
-      component: () => import('../views/SamsungPhoneListView.vue'),
+      component: () => import('../views/user/SamsungPhoneListView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -168,7 +168,7 @@ const router = createRouter({
     {
       path: '/huaweiphoneslist',
       name: 'huaweiphoneslist',
-      component: () => import('../views/HuaweiPhoneListView.vue'),
+      component: () => import('../views/user/HuaweiPhoneListView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -176,7 +176,7 @@ const router = createRouter({
     {
       path: '/motorolaphoneslist',
       name: 'motorolaphoneslist',
-      component: () => import('../views/MotorolaPhoneListView.vue'),
+      component: () => import('../views/user/MotorolaPhoneListView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -184,7 +184,7 @@ const router = createRouter({
     {
       path: '/forgotpassword',
       name: 'forgotpassword',
-      component: () => import('../views/ForgotPasswordView.vue'),
+      component: () => import('../views/account/ForgotPasswordView.vue'),
       meta: {
         requiresAuth: false
       }
@@ -192,7 +192,7 @@ const router = createRouter({
     {
       path: '/resetpassword',
       name: 'resetpassword',
-      component: () => import('../views/ResetPasswordView.vue'),
+      component: () => import('../views/account/ResetPasswordView.vue'),
       meta: {
         requiresAuth: false
       }
@@ -200,12 +200,12 @@ const router = createRouter({
     {
       path: '/password-changed-successfully',
       name: 'password-changed-successfully',
-      component: () => import('../views/PasswordChangedtSuccessfullyView.vue')
+      component: () => import('../views/account/PasswordChangedtSuccessfullyView.vue')
     },
     {
       path: '/reviewtechnician',
       name: 'reviewtechnician',
-      component: () => import('../views/RatingTechnician.vue'),
+      component: () => import('../views/user/RatingTechnician.vue'),
       meta: {
         requiresAuth: true
       }
@@ -213,7 +213,7 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('../views/DashboardView.vue'),
+      component: () => import('../views/technician/DashboardView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -221,7 +221,7 @@ const router = createRouter({
     {
       path: '/inventory',
       name: 'inventory',
-      component: () => import('../views/InventoryView.vue'),
+      component: () => import('../views/technician/InventoryView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -229,7 +229,7 @@ const router = createRouter({
     {
       path: '/tracking/:id',
       name: 'tracking',
-      component: () => import('../views/TrackingView.vue'),
+      component: () => import('../views/technician/TrackingView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -237,7 +237,7 @@ const router = createRouter({
     {
       path: '/tech-service-details',
       name:  'techservicedetails',
-      component: () => import('../views/TechServiceDetailsView.vue'),
+      component: () => import('../views/user/TechServiceDetailsView.vue'),
       meta: {
         requiresAuth: true
       }
@@ -245,7 +245,7 @@ const router = createRouter({
     {
       path: '/support-center-register',
       name: 'support-center-register',
-      component: () => import('../views/RegisterSupportCenterView.vue'),
+      component: () => import('../views/account/RegisterSupportCenterView.vue'),
       meta: {
         requiresAuth: false
       }

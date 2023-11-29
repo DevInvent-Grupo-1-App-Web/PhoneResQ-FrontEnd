@@ -26,7 +26,7 @@
 
     </template>
     
-    <script>
+    <script lang="ts">
     export default {
   name: "FormObservacion",
   data() {

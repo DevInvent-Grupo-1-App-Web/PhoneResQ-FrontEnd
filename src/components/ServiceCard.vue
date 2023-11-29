@@ -8,7 +8,7 @@
                 <img class="service-icon" src="https://picsum.photos/200/300" alt="Service image">
             </div>
             <div class="layout-vertical" style="width: 75%;">
-                <p class="support-center-name">Servicio técnico "Técnicos"</p>
+                <p class="support-center-name">{{ supportCenter.name }}</p>
                 <a style="font-size: small;" href="/reviewtechnician">Más información</a>
             </div>
             <div class="star-container layout-horizontal layout-center">
@@ -53,6 +53,12 @@
             components: {
             },
             methods: {
+            },
+            props: {
+                supportCenter: {
+                    type: Object,
+                    required: true
+                }
             }
         }
 </script>
