@@ -5,13 +5,28 @@
           <img src="@/assets/successfullypasswordchanged.jpg" alt="Woman holding a clipboard">
         </div>
         <div class="col-md-4 col-12">
-          <h1>Su contraseña ha sido restablecida</h1>
+          <h2>Su contraseña ha sido restablecida</h2>
           <p>Ahora puede iniciar sesión con su nueva contraseña.</p>
           <a href="/login" class="btn btn-primary">Iniciar sesión</a>
         </div>
       </div>
     </div>
   </template>
+  
+  <script>
+  export default {
+    name: 'PasswordChangedSuccessfullyView',
+    data() {
+      return {
+      };
+    },
+    methods: {
+    },
+    created() {
+      this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
+    },
+  };
+  </script>
   
   <style scoped>
   
@@ -42,12 +57,13 @@
   }
   
   img {
-    width: 100%;
+    width: 70%;
     height: auto;
   }
   
   h1 {
-    font-size: 24px;
+    
+    font-size: 40px;
     font-weight: bold;
   }
   
