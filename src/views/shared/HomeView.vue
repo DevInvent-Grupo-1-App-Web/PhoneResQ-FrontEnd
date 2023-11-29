@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     async getSupportCenter() {
-      const response = await axios.get('http://localhost:5290/api/v1/supportcenter');
+      const response = await axios.get('https://phoneresq-api.onrender.com/api/v1/supportcenter');
       this.supportCenterList = response.data;
     }
   },

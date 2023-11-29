@@ -326,7 +326,7 @@ export default {
         password: this.contrasenaCliente,
       };
 
-      var response = await axios.post('http://localhost:5290/api/v1/customer/login', payload);
+      var response = await axios.post('https://phoneresq-api.onrender.com/api/v1/customer/login', payload);
 
       if (response.status === 200) {
         // Después de que el usuario inicia sesión con éxito, establece el token en localStorage
@@ -335,7 +335,7 @@ export default {
         this.$root.isLoggedIn = true; // Añade esta línea
         this.$emit("value-received", true);
 
-        var clientData = await axios.get(`http://localhost:5290/api/v1/customer/email/${this.correoCliente}`);
+        var clientData = await axios.get(`https://phoneresq-api.onrender.com/api/v1/customer/email/${this.correoCliente}`);
         
         console.log(clientData);
 
@@ -357,20 +357,21 @@ export default {
     },
 
     // Para el login de técnico
-    async sesionIniciadaTecnico() {
+    sesionIniciadaTecnico() {
       const payload = {
         dni: this.dniTecnico,
         password: this.contrasenaTecnico,
       };
-
-      var response = await axios.post('http://localhost:5290/api/v1/technician/login', payload);
+      this.$router.push({ name: 'dashboard' });
+/*
+      var response = await axios.post('https://phoneresq-api.onrender.com/api/v1/technician/login', payload);
 
       localStorage.setItem('token', 'el_token_generado');
       this.$emit("value-received", true);
       this.$root.isTechnician = true; // Añade esta línea
       this.$root.isLoggedIn = true; // Añade esta línea
 
-      var technicianData = await axios.get(`http://localhost:5290/api/v1/technician/dni/${this.dniTecnico}`);
+      var technicianData = await axios.get(`https://phoneresq-api.onrender.com/api/v1/technician/dni/${this.dniTecnico}`);
       this.$root.userData = {
         nombres: technicianData.data.resource.name,
         dni: technicianData.data.resource.dni,
@@ -382,7 +383,7 @@ export default {
 
       this.$router.push({ name: 'dashboard' });
 
-
+*/
       // Resto de la lógica de inicio de sesión de técnico
     },
 

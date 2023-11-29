@@ -5,7 +5,7 @@
     <div class="form">
       <div class="account-info">
         <span class="p-float-label info-row">
-          <InputText v-model="names" @input="validateNames" />
+          <InputText v-model="nombres" @input="validarNombres" />
           <label for="names">Names</label>
           <small v-if="errors.names">Invalid name</small>
         </span>
@@ -15,24 +15,24 @@
           <small v-if="errors.dni">Invalid DNI</small>
         </span>
         <span class="p-float-label info-row">
-          <InputText v-model="phone" />
+          <InputText v-model="telefono" />
           <label for="phone">Phone</label>
-          <small v-if="errors.phone">Invalid phone</small>
+          <small v-if="errors.phone">Telefono invalido</small>
         </span>
         <span class="p-float-label info-row">
-          <InputText v-model="email" />
-          <label for="email">Email</label>
-          <small v-if="errors.email">Invalid email</small>
+          <InputText v-model="correo" />
+          <label for="email">Correo</label>
+          <small v-if="errors.email">Correo invalido</small>
         </span>
         <span class="p-float-label info-row">
-          <Password v-model="password" />
-          <label for="password">Password</label>
+          <Password v-model="contrasena" />
+          <label for="password">Contraseña</label>
         </span>
         <span class="p-float-label info-row">
-          <Password v-model="repeatPassword" />
-          <label for="repeatPassword">Repeat password</label>
+          <Password v-model="repetirContrasena" />
+          <label for="repeatPassword">Repetir contraseña</label>
         </span>
-        <Button @click="register()">Register</Button>
+        <Button @click="registrarme()">Registrarme</Button>
       </div>
     </div>
   </div>
@@ -40,6 +40,9 @@
 
 <script>
 import "primeicons/primeicons.css";
+import InputText from 'primevue/inputtext';
+import Password from 'primevue/password';
+import Button from 'primevue/button';
 
 export default {
   name: 'RegisterTecnical',
@@ -53,6 +56,16 @@ export default {
       correo: '',
       contrasena: '',
       repetirContrasena: '',
+      errors: {
+        nombres: '',
+        apellidos: '',
+        fechaNacimiento: '',
+        sexo: '',
+        telefono: '',
+        correo: '',
+        contrasena: '',
+        repetirContrasena: '',
+      },
     };
   },
   methods: {
@@ -62,27 +75,7 @@ export default {
       if (!this.validarNombres(this.nombres)) {
         alert("Nombres no válidos. Solo se permiten letras.");
         return;
-      }
-      if (!this.validarNombres(this.apellidos)) {
-        alert("Apellidos no válidos. Solo se permiten letras.");
-        return;
-      }
-      if (!this.validarFechaNacimiento(this.fechaNacimiento)) {
-        alert("Fecha de nacimiento no válida.");
-        return;
-      }
-      if (!this.validarSexo(this.sexo)) {
-        alert("Sexo no válido. Debe ser 'Masculino' o 'Femenino'.");
-        return;
-      }
-      if (!this.validarTelefono(this.telefono)) {
-        alert("Teléfono no válido. Debe empezar con +51 seguido de 9 números.");
-        return;
-      }
-      if (!this.validarCorreo(this.correo)) {
-        alert("Correo electrónico no válido.");
-        return;
-      }
+      }      
       if (this.contrasena.length < 6) {
         alert("La contraseña debe tener al menos 6 caracteres.");
         return;
@@ -97,12 +90,6 @@ export default {
       }
 
     },
-    validarTelefono() {
-      // Elimina cualquier carácter que no sea un número
-      this.telefono = this.telefono.replace(/\D/g, '');
-      return /^\+51\d{9}$/.test(telefono);
-    },
-
     restrictInput(event) {
       // Reemplazar el valor del campo con solo letras y espacios
       event.target.value = event.target.value.replace(/[^A-Za-z\s]/g, '');
@@ -112,19 +99,11 @@ export default {
       // Validar que solo se permitan letras en los nombres
       return /^[a-zA-Z]+$/.test(texto);
     },
-    validarFechaNacimiento(fecha) {
-      // Puedes agregar una validación más específica según tus requerimientos
-      return true;
-    },
-    validarSexo(texto) {
-      // Validar que el sexo sea 'Masculino' o 'Femenino'
-      return /^masculino$|^femenino$/i.test(texto);
-    },
-
-    validarCorreo(correo) {
-
-      return /* Tu validación de correo personalizada */;
-    },
+  },
+  components: {
+    InputText,
+    Password,
+    Button
   },
 };
 </script>

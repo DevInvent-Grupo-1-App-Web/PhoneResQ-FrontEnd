@@ -55,11 +55,13 @@
     this.$root.showNavbar = false; // Oculta el navbar en la página de inicio de sesión
   },
     methods: {
-      registrarCentroSoporte() {
+      async registrarCentroSoporte() {
         // Aquí debes enviar los datos del supportCenter al servidor para crear una instancia de SupportCenter
         // Puedes utilizar una solicitud HTTP (por ejemplo, Axios) para enviar los datos al servidor
         // Ejemplo ficticio:
-        axios.post('http://localhost:5290/api/v1/supportcenter', this.supportCenter)
+        
+        this.$router.push({ name: 'dashboard' });
+        await axios.post('https://phoneresq-api.onrender.com/api/v1/supportcenter', this.supportCenter)
           .then(response => {
             console.log(response);
             // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página

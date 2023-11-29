@@ -9,7 +9,7 @@ import "primeicons/primeicons.css";
       <div class="navbar-link-container">
         <RouterLink class="navbar-link" :to="'/dashboard'">Inicio</RouterLink>
         <RouterLink class="navbar-link" :to="'/servicios'">Servicios</RouterLink>
-        <RouterLink class="navbar-link" :to="'/mensajes'">Mensajes</RouterLink>
+        <!--RouterLink class="navbar-link" :to="'/mensajes'">Mensajes</RouterLink-->
         <RouterLink class="navbar-link" :to="'/mi-cuenta'">Mi cuenta</RouterLink>
       </div>
     </template>

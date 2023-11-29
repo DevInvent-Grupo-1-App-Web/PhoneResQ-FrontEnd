@@ -85,14 +85,14 @@ const registrarme = async () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5290/api/v1/customer/register', JSON.stringify(customerRequest), {
+      const response = await axios.post('https://phoneresq-api.onrender.com/api/v1/customer/register', JSON.stringify(customerRequest), {
         headers: {
           'Content-Type': 'application/json',
         }
       }); 
       // Expect a token with the register. Save it to localstorage
       // localStorage.setItem("login-token", "TOKEN")
-      router.push('/inicio');
+      router.push('/sisopchoose');
     } catch (error) {
       alert('Error al registrar. Verifica los datos.');
       console.log(error);
