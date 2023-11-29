@@ -1,49 +1,62 @@
+<script setup>
+import "primeicons/primeicons.css";
+</script>
+
 <template>
-  <div id="technician">
-    <h2>Let's start creating your account</h2>
-    <br>
+  <div id="appuser">
+    <h2>Empecemos a crear tu cuenta</h2>
+
     <div class="form">
       <div class="account-info">
-        <span class="p-float-label info-row">
-          <InputText v-model="nombres" @input="validarNombres" />
-          <label for="names">Names</label>
-          <small v-if="errors.names">Invalid name</small>
-        </span>
-        <span class="p-float-label info-row">
-          <InputText v-model="dni" />
-          <label for="dni">DNI</label>
-          <small v-if="errors.dni">Invalid DNI</small>
-        </span>
-        <span class="p-float-label info-row">
-          <InputText v-model="telefono" />
-          <label for="phone">Phone</label>
-          <small v-if="errors.phone">Telefono invalido</small>
-        </span>
-        <span class="p-float-label info-row">
-          <InputText v-model="correo" />
-          <label for="email">Correo</label>
-          <small v-if="errors.email">Correo invalido</small>
-        </span>
-        <span class="p-float-label info-row">
-          <Password v-model="contrasena" />
-          <label for="password">Contraseña</label>
-        </span>
-        <span class="p-float-label info-row">
-          <Password v-model="repetirContrasena" />
-          <label for="repeatPassword">Repetir contraseña</label>
-        </span>
-        <Button @click="registrarme()">Registrarme</Button>
+        <div class="info-row">
+          <label for="">Técnico</label>
+        </div>
+        <div class="info-row">
+          <label>Nombres</label>
+          <input type="text" @input="restrictInput(nombres)" v-model="nombres">
+        </div>
+        <div class="info-row">
+          <label>Apellidos</label>
+          <input type="text" @input="restrictInput(apellidos)" v-model="apellidos">
+        </div>
+        <div class="info-row">
+          <label>Fecha de Nacimiento</label>
+          <input type="date" style="width: 350px">
+        </div>
+        <div class="info-row">
+          <label>Sexo</label>
+          <input type="text" @input="restrictInput(sexo)" v-model="sexo">
+        </div>
+        <div class="info-row">
+          <label>Teléfono</label>
+          <div class="telefono-input">
+            <span>+51</span>
+            <input type="tel" @input="validarTelefono" v-model="telefono" maxlength="9">
+          </div>
+        </div>
+        <div class="info-row">
+          <label>Correo Electrónico</label>
+          <input type="email" v-model="correo">
+        </div>
+        <div class="info-row">
+          <label>Contraseña</label>
+          <input type="password" v-model="contrasena">
+        </div>
+        <div class="info-row">
+          <label>Repetir contraseña</label>
+          <input type="password" v-model="repetirContrasena">
+        </div>
+        <div>
+          <input type="checkbox" id="recordarme">
+          <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
+        </div>
+        <button @click="registrarme" type="submit">Registrarme</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import "primeicons/primeicons.css";
-import InputText from 'primevue/inputtext';
-import Password from 'primevue/password';
-import Button from 'primevue/button';
-
 export default {
   name: 'RegisterTecnical',
   data() {
@@ -56,54 +69,72 @@ export default {
       correo: '',
       contrasena: '',
       repetirContrasena: '',
-      errors: {
-        nombres: '',
-        apellidos: '',
-        fechaNacimiento: '',
-        sexo: '',
-        telefono: '',
-        correo: '',
-        contrasena: '',
-        repetirContrasena: '',
-      },
     };
   },
   methods: {
+    validarTelefono() {
+      // Elimina cualquier carácter que no sea un número
+      this.telefono = this.telefono.replace(/\D/g, '');
+      return /^\+51\d{9}$/.test(this.telefono);
+    },
+
+    restrictInput(text) {
+      // Reemplaza el valor del campo con solo letras y espacios
+      return text.replace(/[^A-Za-z\s]/g, '');
+    },
 
     registrarme() {
+      if (
+          this.validarCampo(this.nombres, "Nombres") &&
+          this.validarCampo(this.apellidos, "Apellidos") &&
+          this.validarFechaNacimiento(this.fechaNacimiento) &&
+          this.validarCampo(this.sexo, "Sexo", /^(masculino|femenino)$/i) &&
+          this.validarCorreo(this.correo) &&
+          this.validarContrasena(this.contrasena) &&
+          this.contrasena === this.repetirContrasena
+      )
+      {
+        this.$router.push({ name: 'inicio' });
+      }
+    },
 
-      if (!this.validarNombres(this.nombres)) {
-        alert("Nombres no válidos. Solo se permiten letras.");
-        return;
-      }      
-      if (this.contrasena.length < 6) {
+    validarCampo(campo, nombre, patron) {
+      if (!campo) {
+        alert(`El campo ${nombre} es obligatorio.`);
+        return false;
+      }
+      if (patron && !patron.test(campo)) {
+        alert(`El campo ${nombre} no es válido.`);
+        return false;
+      }
+      return true;
+    },
+
+    validarFechaNacimiento(fecha) {
+      // Agregar validación específica si es necesario
+      return true;
+    },
+
+    validarContrasena(contrasena) {
+      if (!contrasena) {
+        alert("La contraseña es obligatoria.");
+        return false;
+      }
+      if (contrasena.length < 6) {
         alert("La contraseña debe tener al menos 6 caracteres.");
-        return;
+        return false;
       }
-      if (this.contrasena !== this.repetirContrasena) {
-        alert("Las contraseñas no coinciden.");
-        return;
-      }
-
-      else{
-        this.$router.push({ name: 'support-center-register' });
-      }
-
-    },
-    restrictInput(event) {
-      // Reemplazar el valor del campo con solo letras y espacios
-      event.target.value = event.target.value.replace(/[^A-Za-z\s]/g, '');
+      return true;
     },
 
-    validarNombres(texto) {
-      // Validar que solo se permitan letras en los nombres
-      return /^[a-zA-Z]+$/.test(texto);
+    validarCorreo(correo) {
+      if (!correo) {
+        alert("El correo electrónico es obligatorio.");
+        return false;
+      }
+      // Agregar validación de correo electrónico si es necesario
+      return true;
     },
-  },
-  components: {
-    InputText,
-    Password,
-    Button
   },
 };
 </script>

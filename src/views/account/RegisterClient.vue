@@ -1,139 +1,142 @@
+<script setup>
+import "primeicons/primeicons.css";
+</script>
+
 <template>
   <div id="appuser">
     <h2>Empecemos a crear tu cuenta</h2>
-    <br>
+
     <div class="form">
       <div class="account-info">
-        <span class="p-float-label info-row">
-          <InputText v-model="nombres" @input="validarNombres" />
-          <label for="nombres">Nombres</label>
-          <small v-if="errors.nombres">Nombre no válido</small>
-        </span>
-        <span class="p-float-label info-row">
-          <InputText v-model="dni" />
-          <label for="dni">DNI</label>
-          <small v-if="errors.dni">DNI no válido</small>
-        </span>
-        <span class="p-float-label info-row">
-          <InputText v-model="telefono" />
-          <label for="telefono">Teléfono</label>
-          <small v-if="errors.telefono">Teléfono no válido</small>
-        </span>
-        <span class="p-float-label info-row">
-          <InputText v-model="correo" />
-          <label for="correo">Correo Electrónico</label>
-          <small v-if="errors.correo">Correo no válido</small>
-        </span>
-        <span class="p-float-label info-row">
-          <Password v-model="contrasena" />
-          <label for="contrasena">Contraseña</label>
-        </span>
-        <span class="p-float-label info-row">
-          <Password v-model="repetirContrasena" />
-          <label for="repetirContrasena">Repetir contraseña</label>
-        </span>
-        <Button @click="registrarme()">Registrarme</Button>
+        <div class="info-row">
+          <label for="">Cliente</label>
+        </div>
+        <div class="info-row">
+          <label>Nombres</label>
+          <input type="text" @input="restrictInput(nombres)" v-model="nombres">
+        </div>
+        <div class="info-row">
+          <label>Apellidos</label>
+          <input type="text" @input="restrictInput(apellidos)" v-model="apellidos">
+        </div>
+        <div class="info-row">
+          <label>Fecha de Nacimiento</label>
+          <input type="date" style="width: 350px">
+        </div>
+        <div class="info-row">
+          <label>Sexo</label>
+          <input type="text" @input="restrictInput(sexo)" v-model="sexo">
+        </div>
+        <div class="info-row">
+          <label>Teléfono</label>
+          <div class="telefono-input">
+            <span>+51</span>
+            <input type="tel" @input="validarTelefono" v-model="telefono" maxlength="9">
+          </div>
+        </div>
+        <div class="info-row">
+          <label>Correo Electrónico</label>
+          <input type="email" v-model="correo">
+        </div>
+        <div class="info-row">
+          <label>Contraseña</label>
+          <input type="password" v-model="contrasena">
+        </div>
+        <div class="info-row">
+          <label>Repetir contraseña</label>
+          <input type="password" v-model="repetirContrasena">
+        </div>
+        <div>
+          <input type="checkbox" id="recordarme">
+          <label for="recordarme" class="checkbox-label">Acuérdate de mí</label>
+        </div>
+        <button @click="registrarme" type="submit">Registrarme</button>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import "primeicons/primeicons.css";
-import { ICustomerRequest } from "./../../domain/model/Types";
-import InputText from 'primevue/inputtext';
-import Password from 'primevue/password';
-import Button from 'primevue/button';
-import { ref, reactive } from 'vue';
-import { useRouter } from 'vue-router';
-import axios from "axios";
-
-// Data
-
-const router = useRouter();
-const nombres = ref('');
-const dni = ref('');
-const telefono = ref('');
-const correo = ref('');
-const contrasena = ref('');
-const repetirContrasena = ref('');
-const errors = reactive({
-  nombres: '',
-  dni: '',
-  fechaNacimiento: '',
-  sexo: '',
-  telefono: '',
-  correo: '',
-  contrasena: '',
-  repetirContrasena: '',
-});
-
-// Methods
-
-const registrarme = async () => {
-  validarNombres();
-  validarDni();
-  validarTelefono();
-  validarCorreo();
-  if (Object.values(errors).every(error => error === '')) {
-    const customerRequest: ICustomerRequest = {
-      name: nombres.value,
-      dni: dni.value,
-      phone: telefono.value,
-      email: correo.value,
-      password: contrasena.value
+<script>
+export default {
+  name: 'RegisterTecnical',
+  data() {
+    return {
+      nombres: '',
+      apellidos: '',
+      fechaNacimiento: '',
+      sexo: '',
+      telefono: '',
+      correo: '',
+      contrasena: '',
+      repetirContrasena: '',
     };
+  },
+  methods: {
+    validarTelefono() {
+      // Elimina cualquier carácter que no sea un número
+      this.telefono = this.telefono.replace(/\D/g, '');
+      return /^\+51\d{9}$/.test(this.telefono);
+    },
 
-    try {
-      const response = await axios.post('https://phoneresq-api.onrender.com/api/v1/customer/register', JSON.stringify(customerRequest), {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      }); 
-      // Expect a token with the register. Save it to localstorage
-      // localStorage.setItem("login-token", "TOKEN")
-      router.push('/sisopchoose');
-    } catch (error) {
-      alert('Error al registrar. Verifica los datos.');
-      console.log(error);
-      return;
-    }
-  }
+    restrictInput(text) {
+      // Reemplaza el valor del campo con solo letras y espacios
+      return text.replace(/[^A-Za-z\s]/g, '');
+    },
+
+    registrarme() {
+      if (
+          this.validarCampo(this.nombres, "Nombres") &&
+          this.validarCampo(this.apellidos, "Apellidos") &&
+          this.validarFechaNacimiento(this.fechaNacimiento) &&
+          this.validarCampo(this.sexo, "Sexo", /^(masculino|femenino)$/i) &&
+          this.validarCorreo(this.correo) &&
+          this.validarContrasena(this.contrasena) &&
+          this.contrasena === this.repetirContrasena
+      )
+      {
+        this.$router.push({ name: 'sisopchoose' });
+      }
+    },
+
+    validarCampo(campo, nombre, patron) {
+      if (!campo) {
+        alert(`El campo ${nombre} es obligatorio.`);
+        return false;
+      }
+      if (patron && !patron.test(campo)) {
+        alert(`El campo ${nombre} no es válido.`);
+        return false;
+      }
+      return true;
+    },
+
+    validarFechaNacimiento(fecha) {
+      // Agregar validación específica si es necesario
+      return true;
+    },
+
+    validarContrasena(contrasena) {
+      if (!contrasena) {
+        alert("La contraseña es obligatoria.");
+        return false;
+      }
+      if (contrasena.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return false;
+      }
+      return true;
+    },
+
+    validarCorreo(correo) {
+      if (!correo) {
+        alert("El correo electrónico es obligatorio.");
+        return false;
+      }
+      // Agregar validación de correo electrónico si es necesario
+      return true;
+    },
+  },
 };
-
-function validarDni() {
-  dni.value = dni.value.replace(/\D/g, '');
-  if (!/^\d{8}$/.test(dni.value)) {
-    errors.dni = 'Error';
-  }
-  else {
-    errors.dni = '';
-  }
-}
-function validarTelefono() {
-  if (!/^\+51\d{9}$/.test(telefono.value)) {
-    errors.telefono = 'Error';
-  }
-  else {
-    errors.telefono = '';
-  }
-}
-function validarNombres() {
-  if (!/^[a-zA-Z\s]+$/.test(nombres.value)) {
-    errors.nombres = 'Error';
-  }
-  else {
-    errors.nombres = '';
-  }
-}
-function validarCorreo() {
-  if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(correo.value)) {
-    errors.correo = 'Error';
-  }
-  else {
-    errors.correo = '';
-  }
-}
 </script>
 
 <style scoped>
@@ -145,8 +148,7 @@ function validarCorreo() {
     --color-background: #ffff;
   }
 }
-
-.form {
+.form{
   display: flex;
   width: 100%;
   height: 100%;
@@ -159,7 +161,6 @@ function validarCorreo() {
 
 
 }
-
 #appuser {
   margin: 38.7px;
   font-family: 'Nunito Sans', sans-serif;
@@ -170,8 +171,7 @@ function validarCorreo() {
   filter: drop-shadow(0px 69px 42px rgba(200, 200, 200, 0.25));
   background: var(--True-White, #FFF);
 }
-
-.account-info {
+.account-info{
   width: 100%;
   gap: 50px;
   text-align: left;
@@ -179,7 +179,6 @@ function validarCorreo() {
   margin: 38.7px;
 
 }
-
 h2 {
   text-align: left;
   font-family: 'Nunito Sans', sans-serif;
@@ -195,6 +194,22 @@ h2 {
   margin-bottom: -95px;
 }
 
+.telefono-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.telefono-input span {
+  background-color: #eee;
+  padding: 5px;
+}
+.telefono-input input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width:200px
+}
+
 .info-row {
   display: flex;
   flex-direction: column;
@@ -202,9 +217,18 @@ h2 {
   gap: 0;
   flex-shrink: 0;
   margin: 38.7px;
+
+
 }
 
-div.form {
+label {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 600px;
+  flex-shrink: 0;
+
+}
+div.form{
 
   width: 100%;
   height: 100%;
@@ -213,9 +237,7 @@ div.form {
   margin: 38.7px;
   filter: drop-shadow(0px 69px 42px rgba(200, 200, 200, 0.25));
 }
-
-input,
-select {
+input, select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
